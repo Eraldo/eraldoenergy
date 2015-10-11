@@ -27,7 +27,7 @@ class CeleryConfig(AppConfig):
 
         if hasattr(settings, 'RAVEN_CONFIG'):
             # Celery signal registration
-            client = Client(dsn=settings.RAVEN_CONFIG['dsn'])
+            client = Client(dsn=settings.RAVEN_CONFIG['DSN'])
             register_signal(client)
 
 
