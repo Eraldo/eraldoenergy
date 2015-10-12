@@ -27,8 +27,8 @@ urlpatterns = [
 
     # CMS wagtail
     url(r'^cms/', include(wagtailadmin_urls)),
-    url(r'^search/$', 'eraldoenergy.search.views.search', name='search'),  # optional
     url(r'^documents/', include(wagtaildocs_urls)),
+    url(r'^search/$', 'eraldoenergy.search.views.search', name='search'),  # optional
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's serving mechanism
