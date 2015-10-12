@@ -8,12 +8,16 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
-urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="home"),
-    url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
+from wagtail.wagtailadmin import urls as wagtailadmin_urls
+from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.wagtailcore import urls as wagtail_urls
 
+urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
+
+    url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="home"),
+    url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
 
     # User management
     url(r'^users/', include("eraldoenergy.users.urls", namespace="users")),
@@ -21,6 +25,14 @@ urlpatterns = [
 
     # Your stuff: custom urls includes go here
 
+    # CMS wagtail
+    url(r'^cms/', include(wagtailadmin_urls)),
+    url(r'^search/$', 'eraldoenergy.search.views.search', name='search'),  # optional
+    url(r'^documents/', include(wagtaildocs_urls)),
+
+    # For anything not caught by a more specific rule above, hand over to
+    # Wagtail's serving mechanism
+    url(r'', include(wagtail_urls)),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

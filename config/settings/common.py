@@ -34,6 +34,26 @@ DJANGO_APPS = (
     # Admin
     'django.contrib.admin',
 )
+WAGTAIL_APPS = (
+    'eraldoenergy.home',
+    'eraldoenergy.search',
+
+    'wagtail.wagtailcore',
+    'wagtail.wagtailadmin',
+    'wagtail.wagtaildocs',
+    'wagtail.wagtailsnippets',
+    'wagtail.wagtailusers',
+    'wagtail.wagtailimages',
+    'wagtail.wagtailembeds',
+    'wagtail.wagtailsearch',
+    'wagtail.wagtailsites',
+    'wagtail.wagtailredirects',
+    'wagtail.wagtailforms',
+
+    'modelcluster',
+    'compressor',
+    'taggit',
+)
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
     'allauth',  # registration
@@ -48,18 +68,25 @@ LOCAL_APPS = (
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + WAGTAIL_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 # MIDDLEWARE CONFIGURATION
 # ------------------------------------------------------------------------------
 MIDDLEWARE_CLASSES = (
     # Make sure djangosecure.middleware.SecurityMiddleware is listed first
+    'django.middleware.security.SecurityMiddleware',  # added with wagtail
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',  # added with wagtail
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # added with wagtail
+    'wagtail.wagtailcore.middleware.SiteMiddleware',
+    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+
 )
 
 # MIGRATIONS CONFIGURATION
@@ -183,6 +210,8 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',  # added with wagtail
+
 )
 
 # MEDIA CONFIGURATION
@@ -282,3 +311,9 @@ BROKER_URL = env("CELERY_BROKER_URL", default='django://')
 ADMIN_URL = r'^admin/'
 
 # Your common stuff: Below this line define 3rd party library settings
+
+
+########## WAGTAIL
+WAGTAIL_SITE_NAME = "Eraldo Energy"
+WAGTAIL_ENABLE_UPDATE_CHECK = False
+########## END WAGTAIL

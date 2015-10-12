@@ -1,11 +1,14 @@
-{% load staticfiles i18n %}<!DOCTYPE html>
+{% load staticfiles i18n %}
+{% load static wagtailuserbar %}
+<!DOCTYPE html>
 <html lang="en" ng-app>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}Eraldo Energy{% endblock title %}</title>
+    <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+{#    <title>{% block title %}Eraldo Energy{% endblock title %}</title>#}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Eraldo Energy website">
     <meta name="author" content="">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -30,7 +33,7 @@
   </head>
 
   <body>
-    
+    {% wagtailuserbar %}
     <div class="m-b">
       <nav class="navbar navbar-dark navbar-static-top bg-inverse">
         <div class="container">
