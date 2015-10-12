@@ -14,7 +14,7 @@ from wagtail.wagtailcore import urls as wagtail_urls
 
 urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
-    url(settings.ADMIN_URL, include(admin.site.urls)),
+    url(r'^{}/'.format(settings.ADMIN_URL), include(admin.site.urls)),
 
     url(r'^$', TemplateView.as_view(template_name='pages/home.html'), name="home"),
     url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
