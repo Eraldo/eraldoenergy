@@ -53,6 +53,8 @@ WAGTAIL_APPS = (
     'modelcluster',
     'compressor',
     'taggit',
+
+    'django_countries',  # flags
 )
 THIRD_PARTY_APPS = (
     'crispy_forms',  # Form layouts
