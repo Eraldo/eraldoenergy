@@ -12,6 +12,11 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
+BACKEND_NAME = 'Eraldo Energy backend'
+admin.site.site_header = BACKEND_NAME
+admin.site.site_title = BACKEND_NAME
+# admin.site.index_title = 'backend'
+
 urlpatterns = [
     # Django Admin, use {% url 'admin:index' %}
     url(r'^{}/'.format(settings.ADMIN_URL), include(admin.site.urls)),
