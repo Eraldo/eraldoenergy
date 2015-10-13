@@ -17,11 +17,13 @@
 01000101 01110010 01100001 01101100 01100100 01101111
 -->
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
-{#    <title>{% block title %}Eraldo Energy{% endblock title %}</title>#}
+    <title>
+        {% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}
+        {% block title_suffix %}{% endblock %}</title>
+    {#    <title>{% block title %}Eraldo Energy{% endblock title %}</title>#}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Eraldo Energy website">
     <meta name="author" content="Eraldo Energy">
@@ -36,85 +38,267 @@
 
     <link rel="author" href="https://plus.google.com/https://plus.google.com/102746258450496109858?rel=author"/>
 
+    <link rel="canonical" href="http://eraldo.org/"/>
+    <meta property='og:locale' content='en_US'/>
+    <meta property='og:type' content='website'/>
+    <meta property='og:title' content='Eraldo Energy - Person'/>
+    <meta property='og:url' content='http://eraldo.org/'/>
+    <meta property='og:site_name' content='eraldo.org - Eraldo Energy'/>
+    <meta property="og:image" content="http://eraldo.org/static/logo.png"/>
+    <meta property="og:description"
+          content="Want to get in touch with or inform yourself about Eraldo Energy? You&#x27;re in the right place."/>
+
+    <meta name="author" content="Eraldo Energy">
+    <meta name="description"
+          content="Want to get in touch with or inform yourself about Eraldo Energy? You&#x27;re in the right place."/>
+    <meta itemprop='image' content='http://eraldo.org/static/logo.png'>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+
 
     {% block css %}
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+        <!-- Latest compiled and minified CSS -->
+        {# TODO: update to new bootstrap #}
+        {#        <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">#}
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
-    <!-- Your stuff: Third-party css libraries go here -->
+        {# TODO: update older to css block? #}
+        {% block extrahead %}{% endblock %}
 
-    <!-- This file store project specific CSS -->
-    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+        <!-- Your stuff: Third-party css libraries go here -->
+
+        <!-- This file store project specific CSS -->
+        {#        <link href="{% static 'css/project.css' %}" rel="stylesheet">#}
+        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}pages/css/base.css"/>
     {% endblock %}
 
     {% block angular %}
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     {% endblock %}
 
-  </head>
+</head>
 
-  <body>
-    {% wagtailuserbar %}
-    <div class="m-b">
-      <nav class="navbar navbar-dark navbar-static-top bg-inverse">
-        <div class="container">
-         <a class="navbar-brand" href="/">Eraldo Energy</a>
-          <button type="button" class="navbar-toggler hidden-sm-up pull-right" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
-            &#9776;
-          </button>
+<body data-spy="scroll" data-target="#main-menu">
+{% wagtailuserbar %}
+<div id="wrap">
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-toggleable-xs" id="bs-navbar-collapse-1">
-            <nav class="nav navbar-nav">
-              <a class="nav-link nav-item" href="{% url 'home' %}">Home</a>
-              <a class="nav-link nav-item" href="{% url 'about' %}">About</a>
-            </nav>
-        
-            <nav class="nav navbar-nav pull-right">
-              {% if request.user.is_authenticated %}
-                <a class="nav-link nav-item" href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
-                <a class="nav-link nav-item" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>
-              {% else %}
-                <a class="nav-link nav-item" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-                <a class="nav-link nav-item" href="{% url 'account_login' %}">{% trans "Log In" %}</a>
-              {% endif %}
-            </nav>
-          </div>
-        </div>
-      </nav>
-    </div>
+{#    <div class="m-b">#}
+{#        <nav class="navbar navbar-dark navbar-static-top bg-inverse">#}
+{#            <div class="container">#}
+{#                <a class="navbar-brand" href="/">Eraldo Energy</a>#}
+{#                <button type="button" class="navbar-toggler hidden-sm-up pull-right" data-toggle="collapse"#}
+{#                        data-target="#bs-navbar-collapse-1">#}
+{#                    &#9776;#}
+{#                </button>#}
+{##}
+{#                <!-- Collect the nav links, forms, and other content for toggling -->#}
+{#                <div class="collapse navbar-toggleable-xs" id="bs-navbar-collapse-1">#}
+{#                    <nav class="nav navbar-nav">#}
+{#                        <a class="nav-link nav-item" href="{% url 'home' %}">Home</a>#}
+{#                        <a class="nav-link nav-item" href="{% url 'about' %}">About</a>#}
+{#                    </nav>#}
+{##}
+{#                    <nav class="nav navbar-nav pull-right">#}
+{#                        {% if request.user.is_authenticated %}#}
+{#                            <a class="nav-link nav-item"#}
+{#                               href="{% url 'users:detail' request.user.username %}">{% trans "My Profile" %}</a>#}
+{#                            <a class="nav-link nav-item" href="{% url 'account_logout' %}">{% trans "Logout" %}</a>#}
+{#                        {% else %}#}
+{#                            <a class="nav-link nav-item" href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>#}
+{#                            <a class="nav-link nav-item" href="{% url 'account_login' %}">{% trans "Log In" %}</a>#}
+{#                        {% endif %}#}
+{#                    </nav>#}
+{#                </div>#}
+{#            </div>#}
+{#        </nav>#}
+{#    </div>#}
+
+    {#    <div class="container">#}
+    {##}
+    {#        {% if messages %}#}
+    {#            {% for message in messages %}#}
+    {#                <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>#}
+    {#            {% endfor %}#}
+    {#        {% endif %}#}
+    {##}
+    {#        {% block content %}#}
+    {#            <p>Use this document as a way to quick start any new project.</p>#}
+    {#        {% endblock content %}#}
+    {##}
+    {#    </div>#}
+    {#    <!-- /container -->#}
+
+
+    {# CONTAINER #}
 
     <div class="container">
 
-      {% if messages %}
-          {% for message in messages %}
-              <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
-          {% endfor %}
-      {% endif %}
+        <div id="main-menu" class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix"
+             data-offset-top="20">
+            <div class="container">
 
-      {% block content %}
-        <p>Use this document as a way to quick start any new project.</p>
-      {% endblock content %}
+                <div class="row" style="text-align: center; height: 100%;">
 
-    </div> <!-- /container -->
+                    <div class="menu-bar menu-bar-left col-xs-4">
+                        <a class="btn menu-btn visible-xs" href="javascript:;" data-toggle="collapse"
+                           data-target=".navbar-collapse" onclick="$('.menu-btn').toggleClass('menu-btn-close');"></a>
 
-    {% block modal %}{% endblock modal %}
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                {#                                <li class="menu-link icon-link"><a href="{% url 'pages:home' %}">home</a></li>#}
+                                <li class="menu-link"><a href="{% url 'pages:home' %}">about</a></li>
+                                <li class="menu-link dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">topics <b
+                                            class="caret"></b></a>
+                                    <ul class="dropdown-menu pull-left text-left">
+                                        <li><a href="{% url 'dance:home' %}">Dance</a></li>
+                                        <li><a href="{% url 'pages:personal-development' %}">Personal Development</a>
+                                        </li>
+                                        <li><a href="{% url 'pages:web-design' %}">Web Design</a></li>
+                                        <li><a href="{% url 'pages:technology' %}">Technology</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    {% block javascript %}
-      <!-- Latest JQuery -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+                    <div class="menu-bar menu-bar-center col-xs-4">
+                        <a href="#about">
+                            <div class="logo-img">
+                                <a href="{% url 'pages:home' %}">
+                                    <img class="img-circle img-responsive"
+                                         src="https://lh3.googleusercontent.com/-WRKZhDvjIms/AAAAAAAAAAI/AAAAAAAAD2k/iWsA8CP35No/s120-c/photo.jpg">
+                                </a>
+                            </div>
+                            <div class="logo-bar">
+                                <a class="logo-text" href="{% url 'pages:home' %}" title="Home">eraldo</a>
+                            </div>
+                            <div class="call-bar navbar-collapse collapse">
+                                <a class="btn btn-lg call-btn visible-xs" href="tel:+4369910203039"
+                                   title="call Eraldo"></a>
+                            </div>
+                        </a>
+                    </div>
 
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+                    <div class="menu-bar menu-bar-right col-xs-4">
+                        <a class="btn menu-btn visible-xs" href="javascript:;" data-toggle="collapse"
+                           data-target=".navbar-collapse" onclick="$('.menu-btn').toggleClass('menu-btn-close');"></a>
 
-      <!-- Your stuff: Third-party javascript libraries go here -->
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="menu-link"><a href="#" onmouseover="$(this).popover('show')"
+                                                         onmouseout="$(this).popover('hide')" onclick="return false;"
+                                                         data-toggle="popover" data-placement="bottom"
+                                                         data-container="body" data-content="Contact me to get access"
+                                                         data-original-title="Selected people.."
+                                                         title="Selected people..">blog</a></li>
+                                <li class="menu-link"><a href="{% url 'contact:home' %}">contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-      <!-- place project specific Javascript in this file -->
-      <script src="{% static 'js/project.js' %}"></script>
-    {% endblock javascript %}
-  </body>
+                </div>
+                <div class="dongle"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="content" class="container">
+        <div class="dongle"></div>
+
+        {% if messages %}
+            <div id="messages" class="section section-lightgray">
+                {% for message in messages %}
+                    <div class="alert alert-dismissable{% if message.tags %} alert-{{ message.tags }}{% endif %}">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+        <div id="content-footer" class="section section-lightgray text-center text-muted"
+             style="padding-top: 8px;padding-bottom: 8px;">
+            <p>This page has been visited 42,148,917 times since last Tuesday afternoon
+                (estimated).
+                <br>
+                © {% now "Y" %} Eraldo Energy | <a href="{% url 'pages:home' %}">www.eraldo.org</a> | <a
+                        href="{% url 'contact:home' %}">impressum</a> | <a href="{% url 'contact:home' %}">sitemap</a>
+                | <a href="{% url 'contact:home' %}">Designed by Eraldo Webdesign</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+{# CONTAINER END #}
+
+
+{% block modal %}{% endblock modal %}
+
+</div>
+
+<div id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="dongle dongle-bottom"></div>
+    <div class="container" style="padding-top: 0px;">
+        <div class="footer-bar footer-bar-left col-xs-3 col-sm-4">
+            <a href="{% url 'pages:web-design' %}" class="text-muted credit hidden-xs">© 2013 Eraldo Webdesign</a>
+            <a href="{% url 'pages:web-design' %}" class="text-muted credit visible-xs">©</a>
+        </div>
+        <div class="footer-bar footer-bar-middle logo-bar col-xs-6 col-sm-4">
+            <div class="social-bar">
+                <a class="social social-facebook" href="https://www.facebook.com/Eraldo" target="_blank"></a>
+                <a class="social social-google" href="https://plus.google.com/u/0/102746258450496109858"
+                   target="_blank"></a>
+            </div>
+            <div class="logo-text-bar">
+                <a class="logo-text" href="#">eraldo</a>
+            </div>
+        </div>
+        <div class="footer-bar footer-bar-right col-xs-3 col-sm-4">
+            <a href="{% url 'contact:home' %}" class="text-muted credit hidden-xs">✉ Contact Eraldo Energy</a>
+            <a href="#" class="text-muted credit visible-xs">✉</a>
+        </div>
+    </div>
+</div>
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+{% block javascript %}
+    {# TODO: update to new #}
+    <!-- Latest JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    {# older jquery #}
+{#    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>#}
+{#    <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>#}
+
+    {# bootstrap #}
+
+    <!-- Latest compiled and minified JavaScript -->
+    {# TODO: update to new #}
+    {#    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>#}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+    <!-- Your stuff: Third-party javascript libraries go here -->
+
+    <!-- place project specific Javascript in this file -->
+    <script src="{% static 'js/project.js' %}"></script>
+
+    <script>
+        {# determine the active selection in the menu #}
+        {#   e.g.: #}
+        {#   path: web/pages/something/?parameter #}
+        {#   will detect "something" and add css class active to the links list element. #}
+        $('#main-menu a[href*="' + location.pathname.split("/")[location.pathname.split("/").length - 2] + '"][class!="noselect"]').parent("li").addClass('active');
+    </script>
+
+    {% block extra-script %}{% endblock %}
+
+{% endblock javascript %}
+</body>
 </html>
  

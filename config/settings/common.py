@@ -65,6 +65,10 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'eraldoenergy.users',  # custom users app
     # Your stuff: custom apps go here
+    'eraldoenergy.pages',
+    'eraldoenergy.contact',
+    'eraldoenergy.dance',
+    'eraldoenergy.events',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

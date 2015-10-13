@@ -29,6 +29,9 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
+    url(r'^dance/', include('eraldoenergy.dance.urls', namespace="dance")),
+    url(r'^contact/', include('eraldoenergy.contact.urls', namespace="contact")),
+    url(r'', include('eraldoenergy.pages.urls', namespace="pages")),
 
     # CMS wagtail
     url(r'^cms/', include(wagtailadmin_urls)),
