@@ -59,5 +59,8 @@ node_modules/
 # virtual environments
 .env
 
+# Picasa
+*.picasa.ini
+
 # User-uploaded media
 eraldoenergy/media/

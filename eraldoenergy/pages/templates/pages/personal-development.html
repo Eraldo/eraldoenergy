@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Personal Development
+{% endblock %}
+
+{% block extrahead %}
+    <!-- plusgallery -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}pages/plusgallery/css/plusgallery.css">
+    <!-- plusgallery custom -->
+    <style>
+        #pgalbums {
+            text-align: center;
+        }
+
+        .pgalbumthumb {
+            display: inline-block;
+            float: none;
+            max-width: none;
+        }
+
+        .pgthumb {
+            max-width: none;
+        }
+
+        #plusgallery.dark-gallery #pgthumbcrumbs {
+            color: white;
+        }
+
+        .pgzoomcaption {
+            bottom: 60px;
+        }
+
+        #skill-table th {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="section section-stretch section-lightgray">
+
+        <h1 class="tagline"><i>be your best self</i></h1>
+    </div>
+
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="section section-lightgray" style="padding-top: 0px;">
+        <div id="vcard" class="jumbotron">
+            <div class="row" style="text-align: center">
+                <div class="col-xs-12">
+                    <a href="{% url 'contact:home' %}">
+                        <img src="{{ STATIC_URL }}pages/images/coachup.png"
+                             class="img-circle img-responsive">
+                    </a>
+                </div>
+                <div class="col-lg-12">
+                    <h1>Personal Development</h1>
+
+                    <blockquote>
+                        <p>
+                            Whatever you truly want - We will make it happen.
+                        </p>
+                        <small>Eraldo</small>
+                    </blockquote>
+
+                    <div class="well">
+                        <h2>Personal Coaching</h2>
+
+                        <p>
+                            I am good at helping you <em>find out what you want</em>,<br>
+                            <em>motivating you</em> to stay on path<br>
+                            and prodivding you with the right resources to make it an <em>awesome journey</em>.
+                        </p>
+
+                        <p>
+                            Over the years I have collected some useful tools and techniques that enable me to boost and
+                            <em>upgrade your experiences</em>!
+                        </p>
+
+                        <table id="skill-table" class="table table-striped text-left">
+                            <thead>
+                            <tr>
+                                <th>skill</th>
+                                <th>use</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td><a href="http://en.wikipedia.org/wiki/Neuro-linguistic_programming" target="_blank">Neuro
+                                    Linguistic
+                                    Programming (NLP)</a></td>
+                                <td> - managing and tuning your feelings
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://en.wikipedia.org/wiki/Getting_Things_Done" target="_blank">Getting
+                                    Things Done
+                                    (GTD)</a></td>
+                                <td>
+                                    - getting you organized
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://en.wikipedia.org/wiki/Nonviolent_Communication" target="_blank">Nonviolent
+                                    Communication
+                                    Training (NVC)</a></td>
+                                <td> - solving conflicts elegantly
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://en.wikipedia.org/wiki/Nonviolent_Communication" target="_blank">
+                                    Hero's Joureny Guide (Paul Rebillot)</a></td>
+                                <td> - integral life design
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://en.wikipedia.org/wiki/Quantified_Self" target="_blank">Quantified
+                                    Self Tracking
+                                    (QS)</a></td>
+                                <td>
+                                    - gain insights and build habits
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="https://www.djangoproject.com/" target="_blank">Web Development (Python,
+                                    Django)</a></td>
+                                <td> - let me
+                                    quickstart your business
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="{% url 'dance:home' %}">Dance Instructor (Salsa, Bachata, Kizomba)</a></td>
+                                <td> - improve your
+                                    body language
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="http://en.wikipedia.org/wiki/Gamification" target="_blank">Game Psychology
+                                    (Gamification)</a></td>
+                                <td> -
+                                    have fun with everything!
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <p>
+                            <sub>FYI: Money is not an issue.</sub><br>
+                            <i>Questions?</i> - Feel free to <a href="{% url 'contact:home' %}"> contact me</a>.
+                        </p>
+                        <a href="{% url 'contact:home' %}" class="btn btn-primary btn-lg btn-xl">Let' get started</a>
+                    </div>
+
+                    <div class="well">
+                        <h2>CoLegend<br/>
+                            <small><a href="http://www.colegend.org" target="_blank">www.colegend.org</a></small>
+                        </h2>
+                        <blockquote style="border: none">
+                            <p>Be Awesome, Love with an Open Heart and Live a Legendary Life ..Today!</p>
+                            <small>Eraldo</small>
+                        </blockquote>
+
+                        <h3>What is CoLegend?</h3>
+                        It is a Socially-Intelligent Personal Development Platform designed to make you more awesome.<br/>
+                        But that are just words..<br/>
+                        <a href="http://www.colegend.org" target="_blank" class="btn btn-primary btn-lg btn-xl">Check it
+                            out</a>
+                        </p>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="section-end section-end-e"></div>
+    </div>
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="section section-black text-center">
+        <h1 id="coaching-gallery" class="anchor">Coaching Gallery</h1>
+
+        <div id="plusgallery" class="dark-gallery"
+             data-type="google"
+             data-userid="102746258450496109858"
+             data-album-id="5916323385083119905{# selection #}"
+                {#             data-include="5915525769958694257{# selection "#}
+             data-limit="40"
+             data-credit="false"
+                {#             data-album-id="OldWebsiteGallery"#}
+                ><!-- +Gallery http://www.plusgallery.net/ -->
+        </div>
+    </div>
+    {#    <div class="section-end section-end-black"></div>#}
+
+{% endblock %}
+
+{% block extra-script %}
+    <!-- animate anchor links -->
+    <script>
+        var $root = $('html, body');
+        $('a').click(function () {
+            var href = $.attr(this, 'href');
+            $root.animate({
+                scrollTop: $(href).offset().top
+            }, 500, function () {
+                window.location.hash = href;
+            });
+            return false;
+        });
+    </script>
+    <!-- plusgallery -->
+    <!-- Load jQuery ahead of this -->
+    <script src="{{ STATIC_URL }}pages/plusgallery/js/plusgallery.js"></script>
+    <script>
+        $(function () {
+            //DOM loaded
+            $('#plusgallery').plusGallery();
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Eraldo &mdash; {% block title %}Base{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <link rel="shortcut icon" href="{{ STATIC_URL }}pages/images/favicon.ico">
+    <link rel="author" href="https://plus.google.com/https://plus.google.com/102746258450496109858?rel=author"/>
+
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}pages/css/base.css"/>
+
+
+    <link rel="canonical" href="http://eraldo.org/"/>
+    <meta property='og:locale' content='en_US'/>
+    <meta property='og:type' content='website'/>
+    <meta property='og:title' content='Eraldo Energy - Person'/>
+    <meta property='og:url' content='http://eraldo.org/'/>
+    <meta property='og:site_name' content='eraldo.org - Eraldo Energy'/>
+    <meta property="og:image" content="http://eraldo.org/eraldo/static/logo.png"/>
+    <meta property="og:description"
+          content="Want to get in touch with or inform yourself about Eraldo Energy? You&#x27;re in the right place."/>
+
+    <meta name="author" content="Eraldo Energy">
+    <meta name="description"
+          content="Want to get in touch with or inform yourself about Eraldo Energy? You&#x27;re in the right place."/>
+    <meta itemprop='image' content='http://eraldo.org/eraldo/static/logo.png'>
+    <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+    <script src="//eraldo.org/eraldo/static/script.js"
+            type="text/javascript"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div>
+    <![endif]-->
+
+    {% block extrahead %}{% endblock %}
+</head>
+<body data-spy="scroll" data-target="#main-menu">
+
+<div id="wrap">
+
+    {#<nav class="container navbar navbar-default" role="navigation">#}
+    {#  <!-- Brand and toggle get grouped for better mobile display -->#}
+    {#  <div class="navbar-header">#}
+    {#    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">#}
+    {#      <span class="sr-only">Toggle navigation</span>#}
+    {#      <span class="icon-bar"></span>#}
+    {#      <span class="icon-bar"></span>#}
+    {#      <span class="icon-bar"></span>#}
+    {#    </button>#}
+    {#    <a class="navbar-brand" href="#">Brand</a>#}
+    {#  </div>#}
+    {##}
+    {#  <!-- Collect the nav links, forms, and other content for toggling -->#}
+    {#  <div class="collapse navbar-collapse navbar-ex1-collapse">#}
+    {#    <ul class="nav navbar-nav">#}
+    {#      <li class="active"><a href="#">Link</a></li>#}
+    {#      <li><a href="#">Link</a></li>#}
+    {#      <li class="dropdown">#}
+    {#        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>#}
+    {#        <ul class="dropdown-menu">#}
+    {#          <li><a href="#">Action</a></li>#}
+    {#          <li><a href="#">Another action</a></li>#}
+    {#          <li><a href="#">Something else here</a></li>#}
+    {#          <li><a href="#">Separated link</a></li>#}
+    {#          <li><a href="#">One more separated link</a></li>#}
+    {#        </ul>#}
+    {#      </li>#}
+    {#    </ul>#}
+    {#    <form class="navbar-form navbar-left" role="search">#}
+    {#      <div class="form-group">#}
+    {#        <input type="text" class="form-control" placeholder="Search">#}
+    {#      </div>#}
+    {#      <button type="submit" class="btn btn-default">Submit</button>#}
+    {#    </form>#}
+    {#    <ul class="nav navbar-nav navbar-right">#}
+    {#      <li><a href="#">Link</a></li>#}
+    {#      <li class="dropdown">#}
+    {#        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>#}
+    {#        <ul class="dropdown-menu">#}
+    {#          <li><a href="#">Action</a></li>#}
+    {#          <li><a href="#">Another action</a></li>#}
+    {#          <li><a href="#">Something else here</a></li>#}
+    {#          <li><a href="#">Separated link</a></li>#}
+    {#        </ul>#}
+    {#      </li>#}
+    {#    </ul>#}
+    {#  </div><!-- /.navbar-collapse -->#}
+    {#</nav>#}
+
+    <div class="container">
+
+        <div id="main-menu" class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix"
+             data-offset-top="20">
+            <div class="container">
+
+                <div class="row" style="text-align: center; height: 100%;">
+
+                    <div class="menu-bar menu-bar-left col-xs-4">
+                        <a class="btn menu-btn visible-xs" href="javascript:;" data-toggle="collapse"
+                           data-target=".navbar-collapse" onclick="$('.menu-btn').toggleClass('menu-btn-close');"></a>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                {#                                <li class="menu-link icon-link"><a href="{% url 'pages:home' %}">home</a></li>#}
+                                <li class="menu-link"><a href="{% url 'pages:home' %}">about</a></li>
+                                <li class="menu-link dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">topics <b
+                                            class="caret"></b></a>
+                                    <ul class="dropdown-menu pull-left text-left">
+                                        <li><a href="{% url 'dance:home' %}">Dance</a></li>
+                                        <li><a href="{% url 'pages:personal-development' %}">Personal Development</a>
+                                        </li>
+                                        <li><a href="{% url 'pages:web-design' %}">Web Design</a></li>
+                                        <li><a href="{% url 'pages:technology' %}">Technology</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="menu-bar menu-bar-center col-xs-4">
+                        <a href="#about">
+                            <div class="logo-img">
+                                <a href="{% url 'pages:home' %}">
+                                    <img class="img-circle img-responsive"
+                                         src="https://lh3.googleusercontent.com/-WRKZhDvjIms/AAAAAAAAAAI/AAAAAAAAD2k/iWsA8CP35No/s120-c/photo.jpg">
+                                </a>
+                            </div>
+                            <div class="logo-bar">
+                                <a class="logo-text" href="{% url 'pages:home' %}" title="Home">eraldo</a>
+                            </div>
+                            <div class="call-bar navbar-collapse collapse">
+                                <a class="btn btn-lg call-btn visible-xs" href="tel:+4369910203039"
+                                   title="call Eraldo"></a>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="menu-bar menu-bar-right col-xs-4">
+                        <a class="btn menu-btn visible-xs" href="javascript:;" data-toggle="collapse"
+                           data-target=".navbar-collapse" onclick="$('.menu-btn').toggleClass('menu-btn-close');"></a>
+
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="menu-link"><a href="#" onmouseover="$(this).popover('show')"
+                                                         onmouseout="$(this).popover('hide')" onclick="return false;"
+                                                         data-toggle="popover" data-placement="bottom"
+                                                         data-container="body" data-content="Contact me to get access"
+                                                         data-original-title="Selected people.."
+                                                         title="Selected people..">blog</a></li>
+                                <li class="menu-link"><a href="{% url 'contact:home' %}">contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="dongle"></div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="content" class="container">
+        <div class="dongle"></div>
+
+        {% if messages %}
+            <div id="messages" class="section section-lightgray">
+                {% for message in messages %}
+                    <div class="alert alert-dismissable{% if message.tags %} alert-{{ message.tags }}{% endif %}">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+        <div id="content-footer" class="section section-lightgray text-center text-muted"
+             style="padding-top: 8px;padding-bottom: 8px;">
+            <p>This page has been visited 42,148,917 times since last Tuesday afternoon
+                (estimated).
+                <br>
+                © {% now "Y" %} Eraldo Energy | <a href="{% url 'pages:home' %}">www.eraldo.org</a> | <a
+                        href="{% url 'contact:home' %}">impressum</a> | <a href="{% url 'contact:home' %}">sitemap</a>
+                | <a href="{% url 'contact:home' %}">Designed by Eraldo Webdesign</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="footer" class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="dongle dongle-bottom"></div>
+    <div class="container" style="padding-top: 0px;">
+        <div class="footer-bar footer-bar-left col-xs-3 col-sm-4">
+            <a href="{% url 'pages:web-design' %}" class="text-muted credit hidden-xs">© 2013 Eraldo Webdesign</a>
+            <a href="{% url 'pages:web-design' %}" class="text-muted credit visible-xs">©</a>
+        </div>
+        <div class="footer-bar footer-bar-middle logo-bar col-xs-6 col-sm-4">
+            <div class="social-bar">
+                <a class="social social-facebook" href="https://www.facebook.com/Eraldo" target="_blank"></a>
+                <a class="social social-google" href="https://plus.google.com/u/0/102746258450496109858"
+                   target="_blank"></a>
+            </div>
+            <div class="logo-text-bar">
+                <a class="logo-text" href="#">eraldo</a>
+            </div>
+        </div>
+        <div class="footer-bar footer-bar-right col-xs-3 col-sm-4">
+            <a href="{% url 'contact:home' %}" class="text-muted credit hidden-xs">✉ Contact Eraldo Energy</a>
+            <a href="#" class="text-muted credit visible-xs">✉</a>
+        </div>
+    </div>
+</div>
+
+{# SCRIPTS #}
+
+<!-- JavaScript plugins (requires jQuery) -->
+{#<script src="http://code.jquery.com/jquery.js"></script>#}
+{# jquery #}
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
+
+{# bootstrap #}
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<script>
+    {# determine the active selection in the menu #}
+    {#   e.g.: #}
+    {#   path: web/pages/something/?parameter #}
+    {#   will detect "something" and add css class active to the links list element. #}
+    $('#main-menu a[href*="' + location.pathname.split("/")[location.pathname.split("/").length - 2] + '"][class!="noselect"]').parent("li").addClass('active');
+</script>
+
+{% block extra-script %}{% endblock %}
+
+</body>
+</html>

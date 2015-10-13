@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Technology
+{% endblock %}
+
+{% block extrahead %}
+    <!-- plusgallery -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}pages/plusgallery/css/plusgallery.css">
+    <!-- plusgallery custom -->
+    <style>
+        #pgalbums {
+            text-align: center;
+        }
+
+        .pgalbumthumb {
+            display: inline-block;
+            float: none;
+            max-width: none;
+        }
+
+        .pgthumb {
+            max-width: none;
+        }
+
+        #plusgallery.dark-gallery #pgthumbcrumbs {
+            color: green;
+        }
+
+        .pgzoomcaption {
+            bottom: 60px;
+        }
+
+        #geeky-gallery {
+            color: green;
+        }
+
+        .videoWrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            padding-top: 25px;
+            height: 0;
+        }
+
+        .videoWrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="section section-stretch section-lightgray">
+
+        <h1 class="tagline"><i>what the hack</i></h1>
+    </div>
+
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="section section-lightgray" style="padding-top: 0px;">
+        <div id="vcard" class="jumbotron">
+            <div class="row" style="text-align: center">
+                <div class="col-xs-12">
+                    <a href="{% url 'contact:home' %}">
+                        <img src="{{ STATIC_URL }}pages/images/devLoL-logo.png"
+                             class="img-circle img-responsive">
+                    </a>
+                </div>
+                <div class="col-lg-12">
+                    <h1>Technology</h1>
+
+                    <blockquote>
+                        <p>
+                            If you like nerds, raise your hand. If you don't, raise your standards.
+                        </p>
+                        <small>True Fact</small>
+                    </blockquote>
+
+                    <div class="well">
+                        <code>
+                            I ♥ technology!
+                        </code><br>
+
+                        <div style="max-width: 420px; max-height: 315px; margin: 0 auto;">
+                            <div class="videoWrapper">
+                                <!-- Copy & Pasted from YouTube -->
+                                <iframe width="420" height="315" src="//www.youtube.com/embed/dzfC1l-o6GY?rel=0"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <h2>DevLoL</h2>
+                        <p>
+                        Once upon a time..<br>
+                        there was not a single <u>place in Linz</u> where people would gather and <u>work together</u> on some
+                        <u>fun technical projects</u>.<br>
+                        <span class="">.oO( I know - hard to imagine )</span><br>
+                        <br>
+                        Oh yes.. the story..<br>
+                        So together with a friend of mine (yes a girl) I used the one thing to rule them all..<br>
+                        Not that thing - I am talking about SOCIAL POWERS.<br>
+                        (quite rare among hardcore nerds/geeks)<br>
+                        <br>
+                        <i>The result?</i><br>
+                        A new hackspace was founded:
+                        <a href="http://www.devlol.org" target="_blank">www.devlol.org</a><br>
+                        ..and they hacked happily ever after.
+                        </p>
+                        <p>
+                            <i>Questions?</i> - Feel free to <a href="{% url 'contact:home' %}"> contact me</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="well text-center">
+                <h2>DANCE FOR ENGINEERS</h2>
+                <p>
+                <small>Special treat for technology lovers:</small><br>
+                Starting September, I will tech guys how to dance with a very structured approach.<br>
+                .oO( including analogies taken from comuter games, algorithms, mechanics, physics etc )
+                <pre>&#60;music&#62;<b>&#123;&#123;dance moves here&#125;&#125;</b>&#60;/music&#62;</pre>
+                </p>
+
+            </div>
+        </div>
+        <div class="section-end section-end-e"></div>
+    </div>
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="section section-black text-center">
+        <h1 id="geeky-gallery" class="anchor">Geeky Gallery</h1>
+
+        <div id="plusgallery" class="dark-gallery"
+             data-type="google"
+             data-userid="102746258450496109858"
+             data-album-id="5915525769958694257{# selection #}"
+{#             data-include="5915525769958694257{# selection "#}
+             data-limit="40"
+             data-credit="false"
+                {#             data-album-id="OldWebsiteGallery"#}
+                ><!-- +Gallery http://www.plusgallery.net/ -->
+        </div>
+    </div>
+{#    <div class="section-end section-end-black"></div>#}
+
+{% endblock %}
+
+{% block extra-script %}
+    <!-- animate anchor links -->
+    <script>
+        var $root = $('html, body');
+        $('a').click(function () {
+            var href = $.attr(this, 'href');
+            $root.animate({
+                scrollTop: $(href).offset().top
+            }, 500, function () {
+                window.location.hash = href;
+            });
+            return false;
+        });
+    </script>
+    <!-- plusgallery -->
+    <!-- Load jQuery ahead of this -->
+    <script src="{{ STATIC_URL }}pages/plusgallery/js/plusgallery.js"></script>
+    <script>
+        $(function () {
+            //DOM loaded
+            $('#plusgallery').plusGallery();
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Web Design
+{% endblock %}
+
+{% block extrahead %}
+    <!-- plusgallery -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}pages/plusgallery/css/plusgallery.css">
+    <!-- plusgallery custom -->
+    <style>
+        #pgalbums {
+            text-align: center;
+        }
+
+        .pgalbumthumb {
+            display: inline-block;
+            float: none;
+            max-width: none;
+        }
+
+        .pgthumb {
+            max-width: none;
+        }
+
+        #plusgallery.dark-gallery #pgthumbcrumbs {
+            color: white;
+        }
+
+        .pgzoomcaption {
+            bottom: 60px;
+        }
+
+        #skill-table th {
+            text-align: center;
+        }
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="section section-stretch section-lightgray">
+
+        <h1 class="tagline"><i>awesome web sights</i></h1>
+    </div>
+
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="section section-lightgray" style="padding-top: 0px;">
+        <div id="vcard" class="jumbotron">
+            <div class="row" style="text-align: center">
+                <div class="col-xs-12">
+                    <a href="{% url 'contact:home' %}">
+                        <img src="{{ STATIC_URL }}pages/images/responsive.jpg"
+                             class="img-circle img-responsive">
+                    </a>
+                </div>
+                <div class="col-lg-12">
+                    <h1>Web Design</h1>
+
+                    <blockquote>
+                        <p>
+                            Designers are crazy and yet sane enough to know where to draw the line.
+                        </p>
+                        <small>Benjamin Valbret</small>
+                    </blockquote>
+                    <hr style="border: 4px solid #ffffff;">
+
+                    <div class="well" id="stellar-container">
+                        {#                        <div id="stellar-bg" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0"></div>#}
+
+                        <div id="stellar-slide1" data-stellar-background-ratio="0.6"
+                             data-stellar-vertical-offset="0"></div>
+                        <div id="stellar-slide2" data-stellar-background-ratio="1.2"
+                             data-stellar-vertical-offset="-950"></div>
+                        <div id="stellar-content" data-stellar-ratio="1" data-stellar-vertical-offset="0">
+                            <a href="{% url 'contact:home' %}" class="btn btn-primary btn-lg btn-xl">
+                                <h2>Let's get started</h2>
+                            </a>
+                        </div>
+                        <div id="stellar-slide3" data-stellar-background-ratio="0.8"
+                             data-stellar-vertical-offset="1050"></div>
+                    </div>
+
+                    <hr style="border: 4px solid #ffffff;">
+                                                <p>
+                                                    <i>Questions?</i> - Feel free to <a href="{% url 'contact:home' %}"> contact me</a>.
+                                                </p>
+                </div>
+            </div>
+        </div>
+        <div class="section-end section-end-e"></div>
+    </div>
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="section section-black text-center">
+        <h1 id="coaching-gallery" class="anchor">Site Seeing Tour</h1>
+
+        <div id="plusgallery" class="dark-gallery"
+             data-type="google"
+             data-userid="102746258450496109858"
+             data-album-id="5916589778585886705{# selection #}"
+                {#             data-include="5915525769958694257{# selection "#}
+             data-limit="40"
+             data-credit="false"
+                {#             data-album-id="OldWebsiteGallery"#}
+                ><!-- +Gallery http://www.plusgallery.net/ -->
+        </div>
+    </div>
+    {#    <div class="section-end section-end-black"></div>#}
+
+{% endblock %}
+
+{% block extra-script %}
+    <!-- animate anchor links -->
+    <script>
+        var $root = $('html, body');
+        $('a').click(function () {
+            var href = $.attr(this, 'href');
+            $root.animate({
+                scrollTop: $(href).offset().top
+            }, 500, function () {
+                window.location.hash = href;
+            });
+            return false;
+        });
+    </script>
+    <!-- plusgallery -->
+    <!-- Load jQuery ahead of this -->
+    <script src="{{ STATIC_URL }}pages/plusgallery/js/plusgallery.js"></script>
+    <script>
+        $(function () {
+            //DOM loaded
+            $('#plusgallery').plusGallery();
+        });
+    </script>
+
+    <script src="{{ STATIC_URL }}pages/stellar/jquery.stellar.min.js" type="text/javascript"></script>
+    <script>
+        $.stellar({
+            horizontalScrolling: false,
+            {#            verticalOffset: 0,#}
+            {#            responsive: true,#}
+            horizontalOffset: 0
+        });
+        {#    $('.well').stellar();#}
+    </script>
+
+{% endblock %}

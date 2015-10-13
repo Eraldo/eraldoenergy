@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+{% load flags %}
+
+{% block title %}
+    dance
+{% endblock %}
+
+{% block extrahead %}
+    <!-- plusgallery -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}pages/plusgallery/css/plusgallery.css">
+    <!-- plusgallery custom -->
+    <style>
+        #pgalbums {
+            text-align: center;
+        }
+
+        .pgalbumthumb {
+            display: inline-block;
+            float: none;
+            max-width: none;
+        }
+
+        .pgthumb {
+            max-width: none;
+        }
+
+        #plusgallery.dark-gallery #pgthumbcrumbs {
+            color: white;
+        }
+
+        .pgzoomcaption {
+            bottom: 60px;
+        }
+
+        .dance-colored {
+            border-radius: 50%;
+            background-color: black !important;
+            background: url("https://sites.google.com/a/eraldo.org/dance/_/rsrc/1375319489905/register/Disco_Ball_by_29MiCHi92.jpg") no-repeat center center;
+            background-size: 100%;
+            color: white;
+        }
+
+        .dance-colored h2 {
+            background-color: black;
+            margin: 0 25%;
+        }
+
+        .color-banner {
+            background: url("https://sites.google.com/a/eraldo.org/dance/_/rsrc/1375237024851/register/bg.png");
+            background-size: cover;
+            height: 4px;
+        }
+
+        .color-border:hover {
+            border-width: 0 0 4px;
+            border-image: url("https://sites.google.com/a/eraldo.org/dance/_/rsrc/1375237024851/register/bg.png") 0 0 4 0 stretch stretch;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="section section-stretch section-lightgray">
+
+        <h1 class="tagline"><i>let us dance</i></h1>
+    </div>
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="section row">
+        <div class="submenu-link-bar">
+            <a href="#dance-gallery" class="submenu-link color-border col-xs-3">Gallery</a>
+            <a href="#dance-events" class="submenu-link color-border col-xs-3">Events</a>
+            <a href="#dance-teachers" class="submenu-link color-border col-xs-3">Teachers</a>
+            <a href="#dance-shows" class="submenu-link color-border col-xs-3">Shows</a>
+        </div>
+    </div>
+    <div class="section-end section-end-white"></div>
+
+    <div class="section section-lightgray">
+        <div class="section-end section-end-lightgrey"></div>
+        <div id="vcard" class="jumbotron">
+            <div class="row" style="text-align: center">
+                <div class="col-xs-12">
+                    <a href="{% url 'contact:home' %}">
+                        <img src="{{ STATIC_URL }}pages/images/eat-dance-sleep.jpg" class="img-circle img-responsive">
+                    </a>
+                </div>
+                <div class="col-lg-12">
+                    <h1>dance</h1>
+
+                    <p>
+
+                    <div class="well dance-colored">
+                        <h2>Salsa, Bachata, Kizomba & Co.</h2>
+                        <img src="https://sites.google.com/a/eraldo.org/dance/_/rsrc/1368233281986/config/dance-banner-sfit.png.1368233280662.png"
+                             width="50%">
+                    </div>
+                    <div class="well">
+                        <h3>Private Lessons</h3>
+
+                        <div class="color-banner"></div>
+                        I love to dance, listen to and teach Salsa, Bachata & Kizomba.<br>
+                        If you are interested in learning from scratch or improving your skill level.<br>
+                        feel free to <a href="{% url 'contact:home' %}"> contact me</a>.
+                    </div>
+                    <div class="well">
+                        <h3 id="workshops">Workshops</h3>
+
+                        <div class="color-banner"></div>
+                        I created a project called <a href="#" onclick="alert('Coming soon. ;)'); return false;">Own
+                        Style Dance</a>.<br>
+                        If enough people are interested, I will make sure that there are enough Workshops and Events for
+                        you guys.<br>
+
+                        <p>There will also be a <em>special workshop series</em>:<br>
+                        <pre>&#60;music&#62;<b>DANCE FOR ENGINEERS</b>&#60;/music&#62;</pre>
+                        </p>
+                        In order to keep updated - just <a href="{% url 'contact:home' %}"> contact me</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-end section-end-e"></div>
+    </div>
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="section section-black text-center">
+        <h1 id="dance-gallery" class="anchor">My Dance Gallery</h1>
+
+        <div class="color-banner"></div>
+
+        <div id="plusgallery" class="dark-gallery"
+             data-type="google"
+             data-userid="102746258450496109858"
+             data-include="5915319091599881841{# selection #},5915485409849703217{# stars #}"
+             data-limit="40"
+             data-credit="false"
+                {#             data-album-id="OldWebsiteGallery"#}
+                ><!-- +Gallery http://www.plusgallery.net/ -->
+        </div>
+    </div>
+    <div class="section-end section-end-black"></div>
+
+    <div class="section section-grey">
+
+        <h1 id="dance-events" class="anchor">My Dance Events</h1>
+
+        <div class="color-banner"></div>
+
+        <div class="well">
+            <table id="dance-events-table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>start</th>
+                    <th>end</th>
+                    <th>event name</th>
+                    <th>location</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    {% ifchanged event.start|date:"Y" %}
+                        <tr class="seperator">
+                            <td colspan="4">{{ event.start|date:"Y" }}</td>
+                        </tr>
+                    {% endifchanged %}
+                    <tr>
+                        <td>{{ event.start }}</td>
+                        <td>{{ event.end }}</td>
+                        <td>
+                            {% if event.url %}
+                                <a href="{{ event.url }}" target="_blank">{{ event }}</a>
+                            {% else %}
+                                {{ event }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% flag event.country %}
+                            {{ event.country }} ({{ event.city }})
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <h1 id="dance-teachers" class="anchor">My Dance Teachers</h1>
+
+        <div class="color-banner"></div>
+
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item active"><h4>My Personal Trainer</h4></li>
+                <li class="list-group-item"><a href="{{ personal_trainer.url }}"
+                                               target="_blank">{{ personal_trainer.name }}</a>
+                    {% if personal_trainer.country %}
+                        {% flag personal_trainer.country %}
+                    {% endif %}
+
+                </li>
+                <li class="list-group-item active"><h4>Instructors & Partners</h4></li>
+
+                {% for instructor in instructors %}
+                    <li class="list-group-item">
+                        {% if instructor.url %}
+                            <a href="{{ instructor.url }}" target="_blank">{{ instructor.name }}
+                                {% if instructor.alias %} ({{ instructor.alias }}) {% endif %}</a>
+                        {% else %}
+                            {{ instructor.name }}{% if instructor.alias %} ({{ instructor.alias }}) {% endif %}
+                        {% endif %}
+                        {% if instructor.country %}
+                            {% flag instructor.country %}
+                        {% endif %}
+                        {% if instructor.partner %}
+                            &amp;
+                            {% if instructor.partner.country %}
+                                {% flag instructor.partner.country %}
+                            {% endif %}
+                            {% if instructor.partner.url %}
+                                <a href="{{ instructor.partner.url }}" target="_blank">{{ instructor.partner.name }}
+                                    {% if instructor.partner.alias %} ({{ instructor.partner.alias }}) {% endif %}</a>
+                            {% else %}
+                                {{ instructor.partner.name }}
+                                {% if instructor.partner.alias %} ({{ instructor.partner.alias }}) {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+
+                <li class="list-group-item active"><h4>Groups</h4></li>
+
+                {% for group in groups %}
+                    <li class="list-group-item">
+                        {% if group.url %}
+                            <a href="{{ group.url }}" target="_blank">{{ group.name }}</a>
+                        {% else %}
+                            {{ group.name }}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <h1 id="dance-shows" class="anchor">My Dance Shows</h1>
+
+        <div class="color-banner"></div>
+
+        <div class="well">
+            <table id="dance-shows-table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>start</th>
+                    <th>end</th>
+                    <th>event name</th>
+                    <th>location</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for event in show_events %}
+                    <tr>
+                        <td>{{ event.start }}</td>
+                        <td>{{ event.end }}</td>
+                        <td>
+                            {% if event.url %}
+                                <a href="{{ event.url }}" target="_blank">{{ event }}</a>
+                            {% else %}
+                                {{ event }}
+                            {% endif %}
+                            {% if event.description %}
+                                - {{ event.description }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% flag event.country %}
+                            {{ event.country }} ({{ event.city }})
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="section-end section-end-grey"></div>
+
+    <div class="section text-center">
+        <img src="{{ STATIC_URL }}pages/images/salsaholics.jpg" class="img-responsive" style="display: inline">
+    </div>
+
+{% endblock %}
+
+{% block extra-script %}
+    <!-- animate anchor links -->
+    <script>
+        var $root = $('html, body');
+        $('a').click(function () {
+            var href = $.attr(this, 'href');
+            $root.animate({
+                scrollTop: $(href).offset().top
+            }, 500, function () {
+                window.location.hash = href;
+            });
+            return false;
+        });
+    </script>
+    <!-- plusgallery -->
+    <!-- Load jQuery ahead of this -->
+    <script src="{{ STATIC_URL }}pages/plusgallery/js/plusgallery.js"></script>
+    <script>
+        $(function () {
+            //DOM loaded
+            $('#plusgallery').plusGallery();
+        });
+    </script>
+
+{% endblock %}

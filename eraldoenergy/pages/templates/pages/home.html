@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    home
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="section section-stretch section-lightgray">
+
+        <div class="container">
+            <h1 class="tagline">be even more awesome</h1>
+        </div>
+
+        <div id="carousel-main" class="carousel slide" style="border-radius: 40px;">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-main" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-main" data-slide-to="1"></li>
+                <li data-target="#carousel-main" data-slide-to="2"></li>
+                <li data-target="#carousel-main" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Mask -->
+            <div class="carousel-mask"></div>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <a href="{% url 'dance:home' %}"><img src="{{ STATIC_URL }}pages/images/slideshow/dance.jpg"
+                                                           alt="dance"></a>
+
+                    <div class="carousel-caption">
+                        <a class="btn btn-lg" href="{% url 'dance:home' %}">Dance Instructor</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="{% url 'pages:personal-development' %}"><img
+                            src="{{ STATIC_URL }}pages/images/slideshow/coaching.jpg" alt="coaching"></a>
+
+                    <div class="carousel-caption">
+                        <a class="btn btn-lg" href="{% url 'pages:personal-development' %}">Personal Development
+                            Coach</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="{% url 'pages:web-design' %}"><img
+                            src="{{ STATIC_URL }}pages/images/slideshow/webdesign.jpg" alt="webdesign"></a>
+
+                    <div class="carousel-caption">
+                        <a class="btn btn-lg" href="{% url 'pages:web-design' %}">Web Developer</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <a href="{% url 'pages:technology' %}"><img src="{{ STATIC_URL }}pages/images/slideshow/geek.jpg"
+                                                                alt="geek"></a>
+
+                    <div class="carousel-caption">
+                        <a class="btn btn-lg" href="{% url 'pages:technology' %}">Geek</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-main" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-main" data-slide="next">
+                <span class="icon-next"></span>
+            </a>
+        </div>
+
+    </div>
+    <div class="section-end section-end-lightgrey"></div>
+
+    <div class="row section section-grey">
+        <div class="section-end section-end-grey"></div>
+        <div class="jumbotron text-center">
+            <h1 style="text-align: center;">Hello, Adventurer!</h1>
+
+
+            <p>
+                I love this planet!<br>
+                I have stopped living the life that <strike>I should</strike> and
+                started designing the life that <u>I want</u> -<br>
+                enjoying the journey with it's numerous adventures.
+            </p>
+
+            <p>
+                As part of this journey I..<br>
+                <a href="{% url 'pages:personal-development' %}">make lives more awesome</a><br>
+                <a href="{% url 'dance:home' %}">dance with passion</a><br>
+                <a href="{% url 'pages:web-design' %}">design modern websites</a><br>
+                <a href="{% url 'pages:technology' %}">embrace new technology</a><br>
+                <a href="{% url 'pages:technology' %}">craft fun games</a><br>
+                <a href="{% url 'contact:T42' %}">read about psychology</a><br>
+                <a href="{% url 'contact:T42' %}">talk about philosophy</a><br>
+                <a href="{% url 'pages:personal-development' %}">love the life of mine</a><br>
+            </p>
+
+            <p>
+                <a class="btn btn-primary btn-lg" href="{% url 'contact:home' %}">contact &raquo;</a>
+            </p>
+
+            <div class="well">
+                <h2>Quiz</h2>
+                <p>
+                    Eraldo: <i>Do you know me?</i><br>
+                    To find out how good you know me or learn more about me..<br>
+                    I am creating a quiz.<br>
+                    If you get enough points..<br>you will get real prices - so <a href="{% url 'contact:home' %}">stay tuned</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    {#    <div class="section-end section-end-grey"></div>#}
+
+{% endblock %}
+
+{% block extra-script %}
+    <script>
+        $('#carousel-main').carousel()
+    </script>
+{% endblock %}
