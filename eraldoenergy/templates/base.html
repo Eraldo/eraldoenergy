@@ -67,8 +67,9 @@
         <!-- Your stuff: Third-party css libraries go here -->
 
         <!-- This file store project specific CSS -->
-        {#        <link href="{% static 'css/project.css' %}" rel="stylesheet">#}
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}pages/css/base.css"/>
+        <link href="{% static 'css/project.css' %}" rel="stylesheet">
+        <link href="{% static 'pages/css/pages.css' %}" rel="stylesheet">
+{#        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}pages/css/base.css"/>#}
     {% endblock %}
 
     {% block angular %}
