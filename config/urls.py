@@ -18,6 +18,8 @@ admin.site.site_title = BACKEND_NAME
 # admin.site.index_title = 'backend'
 
 urlpatterns = [
+    # Meta information
+    url(r'^robots\.txt/$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
     # Django Admin, use {% url 'admin:index' %}
     url(r'^{}/'.format(settings.ADMIN_URL), include(admin.site.urls)),
 
