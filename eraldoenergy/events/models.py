@@ -22,7 +22,7 @@ class Event(models.Model):
     class Meta:
         ordering = ["-start", "-name"]
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def has_url(self):

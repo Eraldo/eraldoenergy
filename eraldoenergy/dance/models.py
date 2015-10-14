@@ -7,7 +7,7 @@ class Group(models.Model):
     name = models.CharField(max_length=200, unique=True)
     url = models.URLField(blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -37,7 +37,7 @@ class Instructor(models.Model):
     class Meta:
         ordering = ["-order", "name"]
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def has_url(self):
