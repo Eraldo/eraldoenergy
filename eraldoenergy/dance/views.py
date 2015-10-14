@@ -12,6 +12,5 @@ class DanceView(TemplateView):
         context['events'] = Event.objects.filter(type__startswith='dance')
         context['show_events'] = Event.objects.filter(type__exact="dance show")
         context['instructors'] = Instructor.objects.filter(Q(gender__exact='M') | Q(partner__isnull=True)).distinct()
-        context['personal_trainer'] = Instructor.objects.get(type__exact="coach")
         context['groups'] = Group.objects.all()
         return context

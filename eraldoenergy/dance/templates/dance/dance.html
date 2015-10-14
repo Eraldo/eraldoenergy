@@ -191,14 +191,6 @@
 
         <div>
             <ul class="list-group">
-                <li class="list-group-item active"><h4>My Personal Trainer</h4></li>
-                <li class="list-group-item"><a href="{{ personal_trainer.url }}"
-                                               target="_blank">{{ personal_trainer.name }}</a>
-                    {% if personal_trainer.country %}
-                        {% flag personal_trainer.country %}
-                    {% endif %}
-
-                </li>
                 <li class="list-group-item active"><h4>Instructors & Partners</h4></li>
 
                 {% for instructor in instructors %}
