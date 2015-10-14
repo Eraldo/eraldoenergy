@@ -30,6 +30,7 @@ class ContactForm(forms.Form):
         send_mail(subject, message, email, ['eraldo@eraldo.org'])
 
     helper = FormHelper()
+    helper.form_action = '.'
     helper.html5_required = True
     helper.form_class = 'form-horizontal'
     helper.layout = Layout(
