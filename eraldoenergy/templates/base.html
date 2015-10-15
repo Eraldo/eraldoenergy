@@ -44,14 +44,14 @@
     <meta property='og:title' content='Eraldo Energy - Person'/>
     <meta property='og:url' content='http://eraldo.org/'/>
     <meta property='og:site_name' content='eraldo.org - Eraldo Energy'/>
-    <meta property="og:image" content="http://eraldo.org/static/logo.png"/>
+    <meta property="og:image" content="{% static 'images/Avatar-2015.jpg' %}"/>
     <meta property="og:description"
           content="Want to get in touch with or inform yourself about Eraldo Energy? You&#x27;re in the right place."/>
 
     <meta name="author" content="Eraldo Energy">
     <meta name="description"
           content="Want to get in touch with or inform yourself about Eraldo Energy? You&#x27;re in the right place."/>
-    <meta itemprop='image' content='http://eraldo.org/static/logo.png'>
+    <meta itemprop='image' content='{% static 'images/Avatar-2015.jpg' %}'>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
 
 
@@ -118,7 +118,7 @@
                             <div class="logo-img">
                                 <a href="{% url 'pages:home' %}">
                                     <img class="img-circle img-responsive"
-                                         src="https://lh3.googleusercontent.com/-WRKZhDvjIms/AAAAAAAAAAI/AAAAAAAAD2k/iWsA8CP35No/s120-c/photo.jpg">
+                                         src="{% static 'images/Avatar-2015.jpg' %}">
                                 </a>
                             </div>
                             <div class="logo-bar">

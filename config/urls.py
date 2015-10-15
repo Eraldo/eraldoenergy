@@ -31,14 +31,14 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
-    url(r'^dance/', include('eraldoenergy.dance.urls', namespace="dance")),
-    url(r'^contact/', include('eraldoenergy.contact.urls', namespace="contact")),
-    url(r'', include('eraldoenergy.pages.urls', namespace="pages")),
+    url(r'^dance/', include('dance.urls', namespace="dance")),
+    url(r'^contact/', include('contact.urls', namespace="contact")),
+    url(r'', include('pages.urls', namespace="pages")),
 
     # CMS wagtail
     url(r'^cms/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^search/$', 'eraldoenergy.search.views.search', name='search'),  # optional
+    url(r'^search/$', 'search.views.search', name='search'),  # optional
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's serving mechanism

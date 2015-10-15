@@ -1,7 +1,9 @@
 from django.db.models import Q
 from django.views.generic import TemplateView
+
+from events.models import Event
+
 from .models import Instructor, Group
-from eraldoenergy.events.models import Event
 
 
 class DanceView(TemplateView):
