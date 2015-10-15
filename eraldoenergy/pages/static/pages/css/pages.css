@@ -247,7 +247,7 @@ div.container {
     height: 23px;
     width: 23px;
     display: inline-block;
-    background-image: url("http://cdn.crunchify.com/wp-content/uploads/2013/06/social-icons1.png"); }
+    background-image: url("../images/social-icons.png"); }
   #footer .social-facebook {
     background-position: -23px 0px; }
     #footer .social-facebook:hover {
@@ -363,7 +363,7 @@ blockquote small:after {
 /*position: relative; */
 /*} */
 #stellar-slide1 {
-  background: url("http://michaeldoyle.eu/blog/wp-content/uploads/2009/04/wallpaper.jpg") no-repeat center center;
+  background: url("../images/wallpaper.jpg") no-repeat center center;
   /*background-attachment: fixed; */
   /*background-size: 100%; */
   width: 100%;
