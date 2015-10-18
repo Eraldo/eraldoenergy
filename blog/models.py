@@ -36,3 +36,5 @@ class BlogPage(Page):
         ImageChooserPanel('image'),
         FieldPanel('body', classname="full")
     ]
+
+    parent_page_types = ['BlogIndex']
