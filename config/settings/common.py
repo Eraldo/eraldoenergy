@@ -71,6 +71,7 @@ LOCAL_APPS = (
     'contact',
     'dance',
     'events',
+    'blog',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

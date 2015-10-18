@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogpage{% endblock %}
+
+{% block content %}
+    <p class="meta">{{ page.date }}</p>
+
+    {{ page.body|richtext }}
+{% endblock %}

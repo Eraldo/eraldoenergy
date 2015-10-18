@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+    <div class="body">{{ page.body|richtext }}</div>
+
+    {% for page in self.get_children %}
+        <a href="{% pageurl page %}">{{ page.title }}</a>
+    {% endfor %}
+{% endblock %}
