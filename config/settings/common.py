@@ -35,7 +35,6 @@ DJANGO_APPS = (
     'django.contrib.admin',
 )
 WAGTAIL_APPS = (
-    'home',
     'search',
 
     'wagtail.wagtailcore',
@@ -67,6 +66,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'eraldoenergy.users',  # custom users app
     # Your stuff: custom apps go here
+    'home',
     'pages',
     'contact',
     'dance',

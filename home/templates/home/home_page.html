@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
 
@@ -25,39 +25,19 @@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
-                <div class="item active">
-                    <a href="{% url 'dance:home' %}"><img src="{{ STATIC_URL }}pages/images/slideshow/dance.jpg"
-                                                           alt="dance"></a>
+                {% if page.carousel_items.all %}
+                    {% for item in page.carousel_items.all %}
+                        <div class="item{% if forloop.first %} active{% endif %}">
+                            <a href="{% url 'dance:home' %}">
+                                {% image item.image original %}
+                            </a>
 
-                    <div class="carousel-caption">
-                        <a class="btn btn-lg" href="{% url 'dance:home' %}">Dance Instructor</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href="{% url 'pages:personal-development' %}"><img
-                            src="{{ STATIC_URL }}pages/images/slideshow/coaching.jpg" alt="coaching"></a>
-
-                    <div class="carousel-caption">
-                        <a class="btn btn-lg" href="{% url 'pages:personal-development' %}">Personal Development
-                            Coach</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href="{% url 'pages:web-design' %}"><img
-                            src="{{ STATIC_URL }}pages/images/slideshow/webdesign.jpg" alt="webdesign"></a>
-
-                    <div class="carousel-caption">
-                        <a class="btn btn-lg" href="{% url 'pages:web-design' %}">Web Developer</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <a href="{% url 'pages:technology' %}"><img src="{{ STATIC_URL }}pages/images/slideshow/geek.jpg"
-                                                                alt="geek"></a>
-
-                    <div class="carousel-caption">
-                        <a class="btn btn-lg" href="{% url 'pages:technology' %}">Geek</a>
-                    </div>
-                </div>
+                            <div class="carousel-caption">
+                                <a class="btn btn-lg" href="{% url 'dance:home' %}">{{ item.caption }}</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
 
             <!-- Controls -->
