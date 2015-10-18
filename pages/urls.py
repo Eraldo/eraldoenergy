@@ -11,14 +11,14 @@ from django.shortcuts import redirect
 from .views import HomeView, TestView, ChatView, PersonalDevelopmentView, WebDesignView, TechnologyView
 
 urlpatterns = patterns('',
-    # ex: ../
-    url(r'^$',
-        lambda x: redirect('home/'),
-        name='redirect'),
-    # ex: ../home/
-    url(r'^home/$',
-        HomeView.as_view(),
-        name='home'),
+    # # ex: ../
+    # url(r'^$',
+    #     lambda x: redirect('home/'),
+    #     name='redirect'),
+    # # ex: ../home/
+    # url(r'^home/$',
+    #     HomeView.as_view(),
+    #     name='home'),
 
     # TOPICS
     # ex: ../personal-development/

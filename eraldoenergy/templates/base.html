@@ -1,5 +1,5 @@
 {% load staticfiles i18n %}
-{% load static wagtailuserbar %}
+{% load static wagtailuserbar wagtailcore_tags %}
 <!DOCTYPE html>
 <html lang="en" ng-app>
 <!--
@@ -96,8 +96,8 @@
 
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                {#                                <li class="menu-link icon-link"><a href="{% url 'pages:home' %}">home</a></li>#}
-                                <li class="menu-link"><a href="{% url 'pages:home' %}">about</a></li>
+                                {#                                <li class="menu-link icon-link"><a href="{% slugurl 'home' %}">home</a></li>#}
+                                <li class="menu-link"><a href="{% slugurl 'home' %}">about</a></li>
                                 <li class="menu-link dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">topics <b
                                             class="caret"></b></a>
@@ -116,13 +116,13 @@
                     <div class="menu-bar menu-bar-center col-xs-4">
                         <a href="#about">
                             <div class="logo-img">
-                                <a href="{% url 'pages:home' %}">
+                                <a href="{% slugurl 'home' %}">
                                     <img class="img-circle img-responsive"
                                          src="{% static 'images/Avatar-2015.jpg' %}">
                                 </a>
                             </div>
                             <div class="logo-bar">
-                                <a class="logo-text" href="{% url 'pages:home' %}" title="Home">eraldo</a>
+                                <a class="logo-text" href="{% slugurl 'home' %}" title="Home">eraldo</a>
                             </div>
                             <div class="call-bar navbar-collapse collapse">
                                 <a class="btn btn-lg call-btn visible-xs" href="tel:+4369910203039"
@@ -177,7 +177,7 @@
             <p>This page has been visited 42,148,917 times since last Tuesday afternoon
                 (estimated).
                 <br>
-                © {% now "Y" %} Eraldo Energy | <a href="{% url 'pages:home' %}">www.eraldo.org</a> | <a
+                © {% now "Y" %} Eraldo Energy | <a href="{% slugurl 'home' %}">www.eraldo.org</a> | <a
                         href="{% url 'contact:home' %}">impressum</a> | <a href="{% url 'contact:home' %}">sitemap</a>
                 | <a href="{% url 'contact:home' %}">Designed by Eraldo Webdesign</a>
             </p>
