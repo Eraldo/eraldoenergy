@@ -28,7 +28,7 @@
                 {% if page.carousel_items.all %}
                     {% for item in page.carousel_items.all %}
                         <div class="item{% if forloop.first %} active{% endif %}">
-                            <a href="{% url 'dance:home' %}">
+                            <a href="{% url item.link %}">
                                 {% image item.image original %}
                             </a>
 

@@ -18,10 +18,12 @@ class CarouselItem(models.Model):
         related_name='+'
     )
     caption = models.CharField(max_length=255, blank=True)
+    link = models.CharField(max_length=100, blank=True)
 
     panels = [
         ImageChooserPanel('image'),
         FieldPanel('caption'),
+        FieldPanel('link'),
     ]
 
     class Meta:
@@ -30,7 +32,6 @@ class CarouselItem(models.Model):
 
 class HomePageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('HomePage', related_name='carousel_items')
-
 
 
 class HomePage(Page):

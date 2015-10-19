@@ -37,4 +37,4 @@ class BlogPage(Page):
         FieldPanel('body', classname="full")
     ]
 
-    parent_page_types = ['BlogIndex']
+    parent_page_types = ['BlogIndexPage']
