@@ -78,7 +78,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 # Fix for aws s3 europe locations: https://github.com/jschneier/django-storages/issues/28
 # os.environ['S3_USE_SIGV4'] = 'True'
-# AWS_S3_HOST = 's3.eu-central-1.amazonaws.com'
+AWS_S3_HOST = 's3.eu-central-1.amazonaws.com'
 
 AWS_ACCESS_KEY_ID = env('DJANGO_AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('DJANGO_AWS_SECRET_ACCESS_KEY')
