@@ -4,8 +4,7 @@ import os
 from celery import Celery
 from django.apps import AppConfig
 from django.conf import settings
-from raven import Client
-from raven.contrib.celery import register_signal
+
 
 if not settings.configured:
     # set the default Django settings module for the 'celery' program.
@@ -27,6 +26,8 @@ class CeleryConfig(AppConfig):
 
         if hasattr(settings, 'RAVEN_CONFIG'):
             # Celery signal registration
+            from raven import Client
+            from raven.contrib.celery import register_signal
             client = Client(dsn=settings.RAVEN_CONFIG['DSN'])
             register_signal(client)
 
