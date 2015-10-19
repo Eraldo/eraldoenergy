@@ -35,6 +35,10 @@ DJANGO_APPS = (
     'django.contrib.admin',
 )
 WAGTAIL_APPS = (
+    # branding
+    'overextends',
+    'cms',
+
     'search',
 
     'wagtail.wagtailcore',
@@ -193,6 +197,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 # Your stuff: custom template context processors go here
             ],
+            # https://github.com/stephenmcd/django-overextends setup for django 1.9+
+            # 'builtins': ['overextends.templatetags.overextends_tags'],
         },
     },
 ]

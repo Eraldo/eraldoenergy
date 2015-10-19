@@ -1,0 +1,15 @@
+{% overextends "wagtailadmin/userbar/base.html" %}
+{% load compress static i18n %}
+
+{% block furniture %}
+    <div class="wagtail-userbar">
+        <nav>
+            <a href="{% url 'wagtailadmin_home' %}" target="_parent" class="home icon icon-cog" title="{% trans 'Go to CMS' %}">{% trans 'Go to CMS' %}</a>
+            <ul>
+                {% for item in items %}
+                    {{ item|safe }}
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}
