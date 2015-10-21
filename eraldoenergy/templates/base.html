@@ -97,7 +97,7 @@
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 {#                                <li class="menu-link icon-link"><a href="{% url 'contact:home' %}">home</a></li>#}
-                                <li class="menu-link"><a href="{% url 'contact:home' %}">about</a></li>
+                                <li class="menu-link"><a href="{% slugurl 'home' %}">about</a></li>
                                 <li class="menu-link dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">topics <b
                                             class="caret"></b></a>
@@ -114,7 +114,6 @@
                     </div>
 
                     <div class="menu-bar menu-bar-center col-xs-4">
-                        <a href="#about">
                             <div class="logo-img">
                                 <a href="{% url 'contact:home' %}">
                                     <img class="img-circle img-responsive"
@@ -128,7 +127,6 @@
                                 <a class="btn btn-lg call-btn visible-xs" href="tel:+4369910203039"
                                    title="call Eraldo"></a>
                             </div>
-                        </a>
                     </div>
 
                     <div class="menu-bar menu-bar-right col-xs-4">
