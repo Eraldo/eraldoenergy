@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.views.generic import FormView, TemplateView
 from .forms import ContactForm
 
-__author__ = "Eraldo Helal"
+__author__ = "Eraldo Energy"
 
 
 class ContactView(FormView):

@@ -5,7 +5,7 @@ from django import forms
 from django.contrib import messages
 from django.core.mail import send_mail
 
-__author__ = 'Eraldo Helal'
+__author__ = 'Eraldo Energy'
 
 
 class EmailField(Field):

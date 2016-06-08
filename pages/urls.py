@@ -3,7 +3,7 @@
 Contains the web pages related url mappings.
 """
 
-__author__ = "Eraldo Helal"
+__author__ = "Eraldo Energy"
 
 from django.conf.urls import patterns, url
 from django.shortcuts import redirect

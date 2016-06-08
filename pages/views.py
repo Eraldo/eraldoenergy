@@ -5,7 +5,7 @@ This module contains the web pages based views.
 from django.contrib import messages
 from django.views.generic import TemplateView
 
-__author__ = "Eraldo Helal"
+__author__ = "Eraldo Energy"
 
 
 class HomeView(TemplateView):

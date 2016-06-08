@@ -1,6 +1,6 @@
 from django.db import models
 
-__author__ = "Eraldo Helal"
+__author__ = "Eraldo Energy"
 
 
 class Event(models.Model):
