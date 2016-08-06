@@ -14,13 +14,14 @@ class ItemAdmin(admin.ModelAdmin):
     list_filter = ['status', 'price', 'categories']
     readonly_fields = ['thumbnail']
     fields = (
-        ('thumbnail', 'image'),
+        'thumbnail',
         'name', 'description',
         'status', 'buyer',
         # ('status', 'portals', 'buyer'),
         ('price', 'shipping', 'price_min'),
         'categories', 'location', 'notes',
-        'image_2', 'image_3', 'image_4', 'image_5',
+        'link',
+        'image_1', 'image_2', 'image_3', 'image_4', 'image_5',
     )
 
 

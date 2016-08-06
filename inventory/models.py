@@ -75,8 +75,8 @@ class Item(models.Model):
         verbose_name=_('description'),
         blank=True,
     )
-    image = models.URLField(
-        verbose_name=_('image'),
+    link = models.URLField(
+        verbose_name=_('link'),
         blank=True,
         max_length=1000,
     )
@@ -118,6 +118,11 @@ class Item(models.Model):
         verbose_name=_('notes'),
         blank=True,
     )
+    image_1 = models.URLField(
+        verbose_name=_('image 1'),
+        blank=True,
+        max_length=1000,
+    )
     image_2 = models.URLField(
         verbose_name=_('image 2'),
         blank=True,
@@ -143,5 +148,5 @@ class Item(models.Model):
         return self.name
 
     def thumbnail(self):
-        image = self.image
+        image = self.image_1
         return format_html('<img src="{}" style="max-height: 6rem" />', image)
