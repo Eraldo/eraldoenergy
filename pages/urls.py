@@ -10,7 +10,7 @@ from django.shortcuts import redirect
 
 from .views import HomeView, TestView, ChatView, PersonalDevelopmentView, WebDesignView, TechnologyView
 
-urlpatterns = patterns('',
+urlpatterns = [
     # # ex: ../
     # url(r'^$',
     #     lambda x: redirect('home/'),
@@ -42,4 +42,4 @@ urlpatterns = patterns('',
     url(r'^test/$',
         TestView.as_view(),
         name='test'),
-)
+]

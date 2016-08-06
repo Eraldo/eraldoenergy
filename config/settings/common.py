@@ -36,7 +36,6 @@ DJANGO_APPS = (
 )
 WAGTAIL_APPS = (
     # branding
-    'overextends',
     'cms',
 
     'search',

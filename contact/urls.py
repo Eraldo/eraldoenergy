@@ -3,8 +3,7 @@ from .views import ContactView, T42View
 
 __author__ = 'eraldo'
 
-
-urlpatterns = patterns('',
+urlpatterns = [
     # ex: ../contact/
     url(r'^$',
         ContactView.as_view(),
@@ -13,4 +12,4 @@ urlpatterns = patterns('',
     url(r'^T42/$',
         T42View.as_view(),
         name='T42'),
-    )
+]

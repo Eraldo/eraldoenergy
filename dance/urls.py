@@ -3,10 +3,9 @@ from .views import DanceView
 
 __author__ = 'eraldo'
 
-
-urlpatterns = patterns('',
+urlpatterns = [
     # ex: ../dance/
     url(r'^$',
         DanceView.as_view(),
         name='home'),
-    )
+]
