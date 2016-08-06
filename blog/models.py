@@ -13,6 +13,11 @@ class BlogIndexPage(Page):
         FieldPanel('body', classname="full")
     ]
 
+    @property
+    def posts(self):
+        posts = BlogPage.objects.live().order_by('-date')
+        return posts
+
     subpage_types = ['BlogPage']
 
 
@@ -29,6 +34,7 @@ class BlogPage(Page):
 
     search_fields = Page.search_fields + (
         index.SearchField('body'),
+        index.FilterField('date'),
     )
 
     content_panels = Page.content_panels + [

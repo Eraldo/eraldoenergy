@@ -7,7 +7,7 @@
 {% block content %}
     <div class="body">{{ page.body|richtext }}</div>
 
-    {% for page in self.get_children %}
-        <a href="{% pageurl page %}">{{ page.title }}</a>
+    {% for post in page.posts %}
+        <a href="{% pageurl post %}">{{ post.title }}</a> - {{ post.date }}<br>
     {% endfor %}
 {% endblock %}
