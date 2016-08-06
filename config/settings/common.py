@@ -37,7 +37,6 @@ DJANGO_APPS = (
 WAGTAIL_APPS = (
     # branding
     'cms',
-
     'search',
 
     'wagtail.wagtailcore',
@@ -75,6 +74,8 @@ LOCAL_APPS = (
     'dance',
     'events',
     'blog',
+
+    'inventory',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
