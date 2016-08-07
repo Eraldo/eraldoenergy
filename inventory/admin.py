@@ -11,8 +11,10 @@ admin.site.register(PortalLink)
 
 class ItemAdmin(admin.ModelAdmin):
     list_display = ['thumbnail', 'name', 'status', 'price_min', 'price']
-    list_filter = ['status', 'price', 'categories']
+    list_filter = ['status', 'categories']
+    list_editable = ['status', 'price']
     readonly_fields = ['thumbnail']
+    list_per_page = 40
     fields = (
         'thumbnail',
         'name', 'description',
