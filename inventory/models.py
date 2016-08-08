@@ -19,6 +19,21 @@ class Status(models.Model):
         return self.name
 
 
+class Quality(models.Model):
+    name = models.CharField(
+        verbose_name=_('name'),
+        max_length=255,
+        unique=True,
+    )
+
+    class Meta:
+        verbose_name = _('quality')
+        verbose_name_plural = _('qualities')
+
+    def __str__(self):
+        return self.name
+
+
 class Category(models.Model):
     name = models.CharField(
         verbose_name=_('name'),
@@ -83,6 +98,11 @@ class Item(models.Model):
     status = models.ForeignKey(
         verbose_name=_('status'),
         to='Status',
+        on_delete=models.PROTECT,
+    )
+    quality = models.ForeignKey(
+        verbose_name=_('quality'),
+        to='Quality',
         on_delete=models.PROTECT,
     )
     portals = models.ManyToManyField(

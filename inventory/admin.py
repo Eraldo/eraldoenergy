@@ -1,18 +1,19 @@
 from django.contrib import admin
-from .models import Item, Portal, PortalLink, Status, Category
+from .models import Item, Portal, PortalLink, Status, Quality, Category
 
 __author__ = 'eraldo'
 
 admin.site.register(Status)
+admin.site.register(Quality)
 admin.site.register(Category)
 admin.site.register(Portal)
 admin.site.register(PortalLink)
 
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['thumbnail', 'name', 'status', 'price_min', 'price']
-    list_filter = ['status', 'categories']
-    list_editable = ['status', 'price']
+    list_display = ['thumbnail', 'name', 'status', 'quality', 'price_min', 'price']
+    list_filter = ['status', 'quality', 'categories']
+    list_editable = ['status', 'quality', 'price']
     readonly_fields = ['thumbnail']
     list_per_page = 40
     fields = (
