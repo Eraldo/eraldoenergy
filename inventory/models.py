@@ -168,5 +168,6 @@ class Item(models.Model):
         return self.name
 
     def thumbnail(self):
+        url = self.link or self.image_1
         image = self.image_1
-        return format_html('<img src="{}" style="max-height: 6rem" />', image)
+        return format_html('<a href="{}" target="_blank"><img src="{}" style="max-height: 6rem" /></a>', url, image)
