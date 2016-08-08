@@ -35,10 +35,11 @@ class ItemAdmin(admin.ModelAdmin):
         else:
             return self.readonly_fields + ['price_min']
 
-    def get_changelist_formset(self, request, **kwargs):
-        user = request.user
-        if user.is_superuser:
-            self.list_editable += ['price_min']
-        return super().get_changelist_formset(request, **kwargs)
+    # def get_changelist_formset(self, request, **kwargs):
+    #     user = request.user
+    #     if user.is_superuser:
+    #         self.list_editable += ['price_min']
+    #     return super().get_changelist_formset(request, **kwargs)
+
 
 admin.site.register(Item, ItemAdmin)
