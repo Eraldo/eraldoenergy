@@ -28,5 +28,17 @@ class ItemAdmin(admin.ModelAdmin):
         'image_1', 'image_2', 'image_3', 'image_4', 'image_5',
     )
 
+    def get_readonly_fields(self, request, obj=None):
+        user = request.user
+        if user.is_superuser:
+            return self.readonly_fields
+        else:
+            return self.readonly_fields + ['price_min']
+
+    def get_changelist_formset(self, request, **kwargs):
+        user = request.user
+        if user.is_superuser:
+            self.list_editable += ['price_min']
+        return super().get_changelist_formset(request, **kwargs)
 
 admin.site.register(Item, ItemAdmin)
