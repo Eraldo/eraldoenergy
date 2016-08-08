@@ -114,17 +114,20 @@ class Item(models.Model):
         verbose_name=_('buyer'),
         blank=True,
     )
-    price_min = models.IntegerField(
+    price_min = models.DecimalField(
         verbose_name=_('price minimum'),
         blank=True, null=True,
+        max_digits=8, decimal_places=2
     )
-    price = models.IntegerField(
+    price = models.DecimalField(
         verbose_name=_('price'),
         blank=True, null=True,
+        max_digits=8, decimal_places=2
     )
-    shipping = models.IntegerField(
+    shipping = models.DecimalField(
         verbose_name=_('shipping costs'),
         blank=True, null=True,
+        max_digits=4, decimal_places=2
     )
     categories = models.ManyToManyField(
         verbose_name=_('categories'),
