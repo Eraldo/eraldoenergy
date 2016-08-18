@@ -20,7 +20,7 @@ class ItemAdmin(admin.ModelAdmin):
     fields = (
         'thumbnail',
         'name', 'description',
-        'status', 'buyer',
+        'status', 'quality', 'buyer',
         # ('status', 'portals', 'buyer'),
         ('price', 'shipping', 'price_min'),
         'categories', 'location', 'notes',
