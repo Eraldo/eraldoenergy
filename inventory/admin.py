@@ -13,7 +13,7 @@ admin.site.register(PortalLink)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ['thumbnail', 'name', 'status', 'quality', 'price_min', 'price']
     list_display_links = ['name']
-    list_filter = ['status', 'quality', 'categories']
+    list_filter = ['status', 'quality', 'categories', 'platforms']
     list_editable = ['status', 'quality', 'price']
     readonly_fields = ['thumbnail']
     list_per_page = 40
@@ -23,7 +23,7 @@ class ItemAdmin(admin.ModelAdmin):
         'status', 'quality', 'buyer',
         # ('status', 'portals', 'buyer'),
         ('price', 'shipping', 'price_min'),
-        'categories', 'location', 'notes',
+        'categories', 'platforms', 'location', 'notes',
         'link',
         'image_1', 'image_2', 'image_3', 'image_4', 'image_5',
     )
