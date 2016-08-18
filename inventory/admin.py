@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Item, Portal, PortalLink, Status, Quality, Category
+from .models import Item, Portal, PortalLink, Status, Quality, Category, Platform
 
 __author__ = 'eraldo'
 
@@ -8,6 +8,7 @@ admin.site.register(Quality)
 admin.site.register(Category)
 admin.site.register(Portal)
 admin.site.register(PortalLink)
+admin.site.register(Platform)
 
 
 class ItemAdmin(admin.ModelAdmin):
