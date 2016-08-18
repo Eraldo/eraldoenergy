@@ -1,5 +1,4 @@
 from django.db import models
-from django.template.defaultfilters import slugify
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 
@@ -35,17 +34,6 @@ class Quality(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(
-        verbose_name=_('name'),
-        max_length=255,
-        unique=True,
-    )
-
-    def __str__(self):
-        return self.name
-
-
-class Platform(models.Model):
     name = models.CharField(
         verbose_name=_('name'),
         max_length=255,
@@ -139,10 +127,6 @@ class Item(models.Model):
         verbose_name=_('shipping costs'),
         blank=True, null=True,
         max_digits=4, decimal_places=2
-    )
-    platforms = models.ManyToManyField(
-        verbose_name=_('platforms'),
-        to='Platform',
     )
     categories = models.ManyToManyField(
         verbose_name=_('categories'),
