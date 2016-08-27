@@ -72,7 +72,7 @@ class PortalLink(models.Model):
     )
 
     def __str__(self):
-        return self.portal
+        return str(self.portal)
 
 
 def image_path(instance, filename):
