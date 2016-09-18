@@ -5,8 +5,7 @@ Contains the web pages related url mappings.
 
 __author__ = "Eraldo Energy"
 
-from django.conf.urls import patterns, url
-from django.shortcuts import redirect
+from django.conf.urls import url
 
 from .views import HomeView, TestView, ChatView, PersonalDevelopmentView, WebDesignView, TechnologyView
 

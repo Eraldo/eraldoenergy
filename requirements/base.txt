@@ -1,5 +1,5 @@
 # Bleeding edge Django
-django==1.9.7
+django==1.10.1
 
 # Configuration
 django-environ==0.4.0
@@ -43,7 +43,7 @@ celery==3.1.18
 # Your custom requirements go here
 
 # CMS
-wagtail==1.5.2
+wagtail==1.6.2
 
 # flags
 django-countries==3.3

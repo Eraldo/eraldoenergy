@@ -12,10 +12,11 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 
+from search.views import search
+
 BACKEND_NAME = 'Eraldo Energy backend'
 admin.site.site_header = BACKEND_NAME
 admin.site.site_title = BACKEND_NAME
-# admin.site.index_title = 'backend'
 
 urlpatterns = [
     # Meta information
@@ -28,18 +29,18 @@ urlpatterns = [
     # url(r'^about/$', TemplateView.as_view(template_name='pages/about.html'), name="about"),
 
     # User management
-    url(r'^users/', include("eraldoenergy.users.urls", namespace="users")),
+    url(r'^users/', include('eraldoenergy.users.urls', namespace='users')),
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
-    url(r'^dance/', include('dance.urls', namespace="dance")),
-    url(r'^contact/', include('contact.urls', namespace="contact")),
-    url(r'', include('pages.urls', namespace="pages")),
+    url(r'^dance/', include('dance.urls', namespace='dance')),
+    url(r'^contact/', include('contact.urls', namespace='contact')),
+    url(r'', include('pages.urls', namespace='pages')),
 
     # CMS wagtail
     url(r'^cms/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
-    url(r'^search/$', 'search.views.search', name='search'),  # optional
+    url(r'^search/$', search, name='search'),  # optional
 
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's serving mechanism

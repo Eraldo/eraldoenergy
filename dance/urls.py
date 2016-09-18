@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from .views import DanceView
 
 __author__ = 'eraldo'
