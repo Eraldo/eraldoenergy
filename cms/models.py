@@ -4,6 +4,8 @@ from wagtail.wagtailcore.models import Page
 
 
 class ContentPage(Page):
+    template = 'cms/page.html'
+
     content = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
