@@ -5,8 +5,10 @@ from wagtail.wagtailcore.models import Page
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 
+from cms.models import UniquePageMixin
 
-class BlogIndexPage(Page):
+
+class BlogIndexPage(UniquePageMixin, Page):
     body = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
@@ -32,10 +34,10 @@ class BlogPage(Page):
     )
     body = RichTextField(blank=True)
 
-    search_fields = Page.search_fields + (
+    search_fields = Page.search_fields + [
         index.SearchField('body'),
         index.FilterField('date'),
-    )
+    ]
 
     content_panels = Page.content_panels + [
         FieldPanel('date'),

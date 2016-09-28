@@ -8,6 +8,8 @@ from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
+from cms.models import UniquePageMixin
+
 
 class CarouselItem(models.Model):
     image = models.ForeignKey(
@@ -34,7 +36,7 @@ class HomePageCarouselItem(Orderable, CarouselItem):
     page = ParentalKey('HomePage', related_name='carousel_items')
 
 
-class HomePage(Page):
+class HomePage(UniquePageMixin, Page):
     slogan = models.CharField(max_length=250, blank=True)
     body = RichTextField(blank=True)
     box = RichTextField(blank=True)

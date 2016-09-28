@@ -1,8 +1,6 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
-
 {% block body_class %}template-contentpage{% endblock %}
 
 {% block content %}
-    {{ page.content|richtext }}
+    {{ page.content }}
 {% endblock %}
