@@ -1,11 +1,11 @@
 <div class="card" style="background-color: white">
-    <img class="card-img-top img-responsive" src="{{ image }}" alt="{{ name }}">
+    <img class="card-img-top img-responsive" src="{{ image }}" alt="{{ name }}" style="max-height: 6em;">
     <div class="card-block" style="padding-left: 0.5em; padding-right: 0.5em">
         <h4 class="card-title">{{ name }}</h4>
         <p class="card-text">
             <strike style="color: red; font-size: small">€{{ original_price }}</strike>
             <span style="color: green;">€{{ price }}</span>
         </p>
-        <a href="mailto:homepage@eraldo.org?subject=item#{{ id }}" class="btn btn-primary">contact</a>
+        <a href="mailto:homepage@eraldo.org?subject=re:item#{{ id }}" class="btn btn-primary">contact</a>
     </div>
 </div>
