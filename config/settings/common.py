@@ -51,6 +51,8 @@ WAGTAIL_APPS = (
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
 
+    'wagtail.contrib.modeladmin',
+
     'modelcluster',
     'compressor',
     'taggit',

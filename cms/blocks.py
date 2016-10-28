@@ -1,5 +1,5 @@
 from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.blocks import RawHTMLBlock
+from wagtail.wagtailcore.blocks import RawHTMLBlock, StructBlock
 from wagtail.wagtailembeds.blocks import EmbedBlock as WagtailEmbedBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 
@@ -50,6 +50,11 @@ class EmbedBlock(WagtailEmbedBlock):
         embed = value
         context['embed'] = embed
         return context
+
+
+# class QABlock(StructBlock):
+#     question = CharBlock()
+#     answer = RichTextBlock()
 
 
 BASE_BLOCKS = [

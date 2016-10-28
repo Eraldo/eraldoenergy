@@ -1,8 +1,17 @@
 from django.db import models
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
+from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.wagtailcore.fields import StreamField
+from wagtail.wagtailcore.models import Page
+from wagtail.wagtailsearch import index
+from wagtail.wagtailsnippets.models import register_snippet
+
+from cms.blocks import BASE_BLOCKS
+from cms.models import UniquePageMixin
 
 
+@register_snippet
 class Status(models.Model):
     name = models.CharField(
         verbose_name=_('name'),
@@ -18,6 +27,7 @@ class Status(models.Model):
         return self.name
 
 
+@register_snippet
 class Quality(models.Model):
     name = models.CharField(
         verbose_name=_('name'),
@@ -44,6 +54,7 @@ class Category(models.Model):
         return self.name
 
 
+@register_snippet
 class Portal(models.Model):
     name = models.CharField(
         verbose_name=_('name'),
@@ -173,3 +184,56 @@ class Item(models.Model):
         url = self.link or self.image_1
         image = self.image_1
         return format_html('<a href="{}" target="_blank"><img src="{}" style="max-height: 6rem" /></a>', url, image)
+
+    panels = [
+        FieldPanel('name'),
+        FieldPanel('description'),
+        FieldPanel('link'),
+        FieldPanel('status'),
+        FieldPanel('quality'),
+        # FieldPanel('portals'),
+        # InlinePanel('portals'),
+        FieldPanel('buyer'),
+        FieldPanel('price_min'),
+        FieldPanel('price'),
+        FieldPanel('shipping'),
+        FieldPanel('categories'),
+        FieldPanel('location'),
+        FieldPanel('notes'),
+        MultiFieldPanel(
+            [
+                FieldPanel('image_1'),
+                FieldPanel('image_2'),
+                FieldPanel('image_3'),
+                FieldPanel('image_4'),
+                FieldPanel('image_5'),
+            ],
+            heading="Images",
+            classname="collapsible"
+        ),
+    ]
+
+
+class InventoryPage(UniquePageMixin, Page):
+    template = 'inventory/index.html'
+
+    content = StreamField(
+        BASE_BLOCKS,
+        blank=True
+    )
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        context['items'] = Item.objects.all()
+        return context
+
+    class Meta:
+        verbose_name = _('Inventory')
+
+    content_panels = Page.content_panels + [
+        StreamFieldPanel('content'),
+    ]
+
+    search_fields = Page.search_fields + [
+        index.SearchField('content'),
+    ]

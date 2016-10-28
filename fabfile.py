@@ -1,11 +1,18 @@
 from fabric.api import env, local, require
 
+project_name = 'eraldoenergy'
+
 
 def backup():
     """fab [environment] backup"""
     require('environment')
-    local('pg_dump -Fc {project} > backups/{project}-{environment}_`date +%Y-%m-%d_%H%M%S`.dump'.format(
-            project='eraldoenergy', environment=env.environment))
+    if env.environment == "development":
+        local('pg_dump -Fc {project} > backups/{project}-{environment}_`date +%Y-%m-%d_%H%M%S`.dump'.format(
+            project=project_name, environment=env.environment))
+    elif env.environment in ['staging', 'production']:
+        local(
+            'curl -o backups/{project}-{environment}_`date +%Y-%m-%d_%H%M%S`.dump `heroku pg:backups public-url --app {app}`'.format(
+                project=project_name, environment=env.environment, app=env.app))
 
 
 def deploy():
@@ -73,12 +80,12 @@ def development():
 def staging():
     """fab staging [command]"""
     env.environment = 'staging'
-    env.app = 'colegend-staging'
+    env.app = 'eraldoenergy-staging'
     env.branch = 'staging'
 
 
 def production():
     """fab production [command]"""
     env.environment = 'production'
-    env.app = 'colegend'
+    env.app = 'eraldoenergy'
     env.branch = 'master'
