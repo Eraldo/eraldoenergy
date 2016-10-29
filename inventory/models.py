@@ -1,5 +1,7 @@
+from autoslug import AutoSlugField
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
+from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
 from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel, InlinePanel
@@ -97,6 +99,9 @@ class Item(models.Model):
         max_length=255,
         unique=True,
     )
+    slug = AutoSlugField(
+        populate_from='name',
+    )
     description = models.TextField(
         verbose_name=_('description'),
         blank=True,
@@ -127,6 +132,11 @@ class Item(models.Model):
     )
     price_min = models.DecimalField(
         verbose_name=_('price minimum'),
+        blank=True, null=True,
+        max_digits=8, decimal_places=2
+    )
+    price_original = models.DecimalField(
+        verbose_name=_('original price'),
         blank=True, null=True,
         max_digits=8, decimal_places=2
     )
@@ -178,8 +188,21 @@ class Item(models.Model):
         max_length=1000,
     )
 
+    @property
+    def images(self):
+        images = []
+        for attribute in ['image_1', 'image_2', 'image_3', 'image_4', 'image_5']:
+            image = getattr(self, attribute)
+            if image:
+                images.append(image)
+        return images
+
     def __str__(self):
         return self.name
+
+    @property
+    def url(self):
+        return reverse('inventory:detail', kwargs={'slug': self.slug})
 
     def thumbnail(self):
         url = self.link or self.image_1
@@ -196,6 +219,7 @@ class Item(models.Model):
         # InlinePanel('portals'),
         FieldPanel('buyer'),
         FieldPanel('price_min'),
+        FieldPanel('price_original'),
         FieldPanel('price'),
         FieldPanel('shipping'),
         FieldPanel('categories'),

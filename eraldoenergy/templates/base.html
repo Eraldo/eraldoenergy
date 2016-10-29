@@ -167,7 +167,7 @@
 
             <div class="section section-stretch section-lightgray">
 
-                <h1 class="tagline"><i>{{ page.title }}</i></h1>
+                <h1 class="tagline"><i>{% if page %}{{ page.title }}{% elif title %}{{ title }}{% endif %}</i></h1>
             </div>
 
             <div class="section-end section-end-lightgrey"></div>
@@ -263,4 +263,4 @@
 {% endblock javascript %}
 </body>
 </html>
- 
+

@@ -1,0 +1,16 @@
+<a href="{{ url }}">
+    <div class="card" style="background-color: white">
+        <img class="card-img-top img-responsive" src="{{ image }}" alt="{{ name }}" style="max-height: 6em;">
+        <div class="card-block" style="padding-left: 0.5em; padding-right: 0.5em">
+            <h4 class="card-title">{{ name }}</h4>
+            <p class="card-text">
+                {% if original_price %}
+                    <strike style="color: red; font-size: small">€{{ original_price }}</strike>{% endif %}
+                {% if price %}
+                    <span style="color: green;">€{{ price }}</span>
+                {% endif %}
+            </p>
+            <a href="mailto:homepage@eraldo.org?subject=re:item#{{ id }}" class="btn btn-primary">contact</a>
+        </div>
+    </div>
+</a>

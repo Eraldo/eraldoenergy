@@ -35,6 +35,7 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     url(r'^dance/', include('dance.urls', namespace='dance')),
     url(r'^contact/', include('contact.urls', namespace='contact')),
+    url(r'^items/', include('inventory.urls', namespace='inventory')),
     url(r'', include('pages.urls', namespace='pages')),
 
     # CMS wagtail

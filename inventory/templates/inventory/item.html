@@ -1,11 +1,43 @@
-<div class="card" style="background-color: white">
-    <img class="card-img-top img-responsive" src="{{ image }}" alt="{{ name }}" style="max-height: 6em;">
-    <div class="card-block" style="padding-left: 0.5em; padding-right: 0.5em">
-        <h4 class="card-title">{{ name }}</h4>
-        <p class="card-text">
-            <strike style="color: red; font-size: small">€{{ original_price }}</strike>
-            <span style="color: green;">€{{ price }}</span>
-        </p>
-        <a href="mailto:homepage@eraldo.org?subject=re:item#{{ id }}" class="btn btn-primary">contact</a>
+{% extends "base.html" %}
+{% load inventory_tags %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-8">
+            <a href="{{ item.image_1 }}" target="_blank">
+                <img class="card-img-top img-responsive" src="{{ item.image_1 }}" alt="{{ item.name }}"
+                     style="max-height: 20em;">
+            </a>
+        </div>
+        <div class="col-md-4">
+            {% for image in item.images|slice:"1:" %}
+                <a href="{{ image }}" target="_blank">
+                    <img class="card-img-top img-responsive" src="{{ image }}" alt="{{ item.name }}"
+                         style="max-height: 5em;">
+                </a>
+            {% endfor %}
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="col-md-12" style="text-align: left">
+            <br>
+
+            <p>
+                Price:
+                {% if item.price_original %}
+                    <strike style="color: red; font-size: small">€{{ item.price_original }}</strike>
+                {% endif %}
+                {% if item.price %}
+                    <span style="color: green;">€{{ item.price }}</span>
+                {% endif %}
+                <a href="mailto:homepage@eraldo.org?subject=re:item#{{ id }}"
+                   class="btn btn-primary pull-right">contact</a>
+            </p>
+            <div class="well">{{ item.description|linebreaksbr }}</div>
+        </div>
     </div>
-</div>
+{% endblock %}

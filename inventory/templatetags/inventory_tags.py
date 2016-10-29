@@ -8,7 +8,7 @@ register = template.Library()
 @register.tag
 class Item(InclusionTag):
     name = 'item'
-    template = 'inventory/item.html'
+    template = 'inventory/widgets/item.html'
 
     def get_context(self, context, **kwargs):
         item = context.get('item')
@@ -17,7 +17,8 @@ class Item(InclusionTag):
                 'name': item,
                 'image': item.image_1,
                 'price': item.price,
-                'original_price': item.price * 2 if item.price else '',
+                'original_price': item.price_original,
+                'url': item.url,
                 'id': item.pk,
             }
         else:
