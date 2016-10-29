@@ -17,7 +17,7 @@ class Item(InclusionTag):
                 'name': item,
                 'image': item.image_1,
                 'price': item.price,
-                'original_price': item.price * 2,
+                'original_price': item.price * 2 if item.price else '',
                 'id': item.pk,
             }
         else:

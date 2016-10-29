@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import models
 from django.utils.html import format_html
 from django.utils.translation import ugettext_lazy as _
@@ -224,7 +225,21 @@ class InventoryPage(UniquePageMixin, Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        context['items'] = Item.objects.all()
+
+        items = Item.objects.all()
+        paginator = Paginator(items, 20)  # Show 20 contacts per page
+
+        page = request.GET.get('page')
+        try:
+            items = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            items = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            items = paginator.page(paginator.num_pages)
+        context['items'] = items
+
         return context
 
     class Meta:
