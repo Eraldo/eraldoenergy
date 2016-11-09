@@ -250,7 +250,7 @@ class InventoryPage(UniquePageMixin, Page):
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
 
-        items = Item.objects.all()
+        items = Item.objects.exclude(status__name__in=['sold', 'shipped', 'done'])
         paginator = Paginator(items, 20)  # Show 20 contacts per page
 
         page = request.GET.get('page')
