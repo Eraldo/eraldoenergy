@@ -1,4 +1,7 @@
 from django.contrib import admin
+from django.utils.html import format_html
+from wagtail.wagtailcore.models import Site
+
 from .models import Item, Portal, PortalLink, Status, Quality, Category
 
 __author__ = 'eraldo'
@@ -19,7 +22,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_display_links = ['name']
     list_filter = ['status', 'quality', 'categories']
     list_editable = ['status', 'quality', 'price', 'price_original']
-    readonly_fields = ['thumbnail']
+    readonly_fields = ['thumbnail', 'frontend']
     list_per_page = 40
     fields = (
         'thumbnail',
@@ -30,8 +33,14 @@ class ItemAdmin(admin.ModelAdmin):
         'categories', 'location', 'notes',
         'link',
         'image_1', 'image_2', 'image_3', 'image_4', 'image_5',
+        'frontend',
     )
     inlines = [PortalLinkInline]
+
+    def frontend(self, obj):
+        root_url = Site.objects.first().root_url
+        link = '{0}{1}'.format(root_url, obj.url)
+        return format_html('<a href="{0}" target="_blank">{0}</a>', link)
 
     def get_readonly_fields(self, request, obj=None):
         user = request.user

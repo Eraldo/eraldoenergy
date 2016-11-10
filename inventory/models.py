@@ -204,6 +204,9 @@ class Item(models.Model):
     def url(self):
         return reverse('inventory:detail', kwargs={'slug': self.slug})
 
+    def get_absolute_url(self):
+        return self.url
+
     def thumbnail(self):
         url = self.link or self.image_1
         image = self.image_1
