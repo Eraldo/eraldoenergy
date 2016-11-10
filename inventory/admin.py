@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from wagtail.wagtailcore.models import Site
 
 from .models import Item, Portal, PortalLink, Status, Quality, Category
 
@@ -37,7 +38,7 @@ class ItemAdmin(admin.ModelAdmin):
     inlines = [PortalLinkInline]
 
     def frontend(self, obj):
-        root_url = 'https://www.eraldo.org'
+        root_url = Site.objects.first().root_url
         link = '{0}{1}'.format(root_url, obj.url)
         return format_html('<a href="{0}" target="_blank">{0}</a>', link)
 
