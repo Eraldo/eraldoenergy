@@ -37,7 +37,7 @@ class ItemAdmin(admin.ModelAdmin):
     inlines = [PortalLinkInline]
 
     def frontend(self, obj):
-        root_url = 'https://www.eraldo.org/'
+        root_url = 'https://www.eraldo.org'
         link = '{0}{1}'.format(root_url, obj.url)
         return format_html('<a href="{0}" target="_blank">{0}</a>', link)
 
