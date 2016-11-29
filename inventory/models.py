@@ -259,7 +259,7 @@ class InventoryPage(UniquePageMixin, Page):
         from .filters import ItemFilter
         filter = ItemFilter(data=request.GET, queryset=items)
         context['filter'] = filter
-        filtered_categories = filter.data.getlist('categories')
+        filtered_categories = filter.data.get('categories')
         filtered_name = filter.data.get('name__icontains')
         if filtered_name or filtered_categories:
             context['filtered'] = True
