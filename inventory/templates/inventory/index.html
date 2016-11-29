@@ -59,7 +59,7 @@
                 <ul class="pagination">
                     {% if items.has_previous %}
                         <li>
-                            <a href="?page={{ items.previous_page_number }}" aria-label="Previous">
+                            <a href="?page={{ items.previous_page_number }}&{{ request.GET.urlencode }}" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
@@ -68,11 +68,11 @@
                     {{ items.page_range }}
                     {% for page in items.paginator.page_range %}
                         <li{% if page == items.number %} class="active"{% endif %}><a
-                                href="?page={{ page }}">{{ page }}</a></li>
+                                href="?page={{ page }}&{{ request.GET.urlencode }}">{{ page }}</a></li>
                     {% endfor %}
                     {% if items.has_next %}
                         <li>
-                            <a href="?page={{ items.next_page_number }}" aria-label="Next">
+                            <a href="?page={{ items.next_page_number }}&{{ request.GET.urlencode }}" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>
                         </li>
