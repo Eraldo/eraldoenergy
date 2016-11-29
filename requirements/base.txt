@@ -19,6 +19,9 @@ django-model-utils==2.3.1
 # Images
 Pillow==2.9.0
 
+# Filtering
+django-filter==1.0.1
+
 # For user registration, either via email or social
 # Well-built with regular release cycles!
 django-allauth==0.24.1

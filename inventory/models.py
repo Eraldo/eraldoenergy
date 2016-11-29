@@ -256,6 +256,14 @@ class InventoryPage(UniquePageMixin, Page):
         context = super().get_context(request, *args, **kwargs)
 
         items = Item.objects.exclude(status__name__in=['sold', 'shipped', 'done'])
+        from .filters import ItemFilter
+        filter = ItemFilter(data=request.GET, queryset=items)
+        context['filter'] = filter
+        filtered_categories = filter.data.getlist('categories')
+        filtered_name = filter.data.get('name__icontains')
+        if filtered_name or filtered_categories:
+            context['filtered'] = True
+        items = filter.qs
         paginator = Paginator(items, 20)  # Show 20 contacts per page
 
         page = request.GET.get('page')

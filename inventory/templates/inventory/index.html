@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load inventory_tags %}
+{% load inventory_tags crispy_forms_tags %}
 
 {% block extrahead %}
     {{ block.super }}
@@ -7,6 +7,38 @@
 
 {% block content %}
     {{ page.content }}
+    <div class="filters">
+        {% if filtered %}
+            <a href="#" data-toggle="modal" data-target="#modal-filters" class="btn btn-warning">
+                <i class="fa fa-filter" aria-hidden="true"></i> Filtering is on
+            </a>
+        {% else %}
+            <a href="#" data-toggle="modal" data-target="#modal-filters" class="btn btn-default">
+                <i class="fa fa-filter" aria-hidden="true"></i> Filters
+            </a>
+        {% endif %}
+
+        <div class="modal fade" id="modal-filters" tabindex="-1" role="dialog"
+             aria-labelledby="modal-filters-label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="modal-filters-label">Filters</h4>
+                    </div>
+                    <div class="modal-body">
+                        {% crispy filter.form %}
+                    </div>
+                    {#                    <div class="modal-footer">#}
+                    {#                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>#}
+                    {#                    </div>#}
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         {% for item in items %}
             <div class="col-md-3">
@@ -16,6 +48,8 @@
             {% if forloop.counter|divisibleby:4 %}
                 <div class="clearfix hidden-sm-down"></div>
             {% endif %}
+            {% empty %}
+            No items found.
         {% endfor %}
 
     </div>
@@ -33,7 +67,8 @@
 
                     {{ items.page_range }}
                     {% for page in items.paginator.page_range %}
-                        <li{% if page == items.number %} class="active"{% endif %}><a href="?page={{ page }}">{{ page }}</a></li>
+                        <li{% if page == items.number %} class="active"{% endif %}><a
+                                href="?page={{ page }}">{{ page }}</a></li>
                     {% endfor %}
                     {% if items.has_next %}
                         <li>
