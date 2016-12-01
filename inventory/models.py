@@ -202,9 +202,10 @@ class Item(models.Model):
 
     @property
     def url(self):
-        if not self.slug:
-            self.save()
-        return reverse('inventory:detail', kwargs={'slug': self.slug})
+        url = ''
+        if self.slug:
+            url = reverse('inventory:detail', kwargs={'slug': self.slug})
+        return url
 
     def get_absolute_url(self):
         return self.url

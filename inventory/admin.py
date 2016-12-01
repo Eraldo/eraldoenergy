@@ -39,9 +39,13 @@ class ItemAdmin(admin.ModelAdmin):
     inlines = [PortalLinkInline]
 
     def frontend(self, obj):
-        domain = Site.objects.get_current().domain
-        link = 'www.{0}{1}'.format(domain, obj.url)
-        return format_html('<a href="{0}" target="_blank">{0}</a>', link)
+        url = ''
+        if obj.url:
+            domain = Site.objects.get_current().domain
+            link = 'www.{0}{1}'.format(domain, obj.url)
+            url = format_html('<a href="{0}" target="_blank">{0}</a>', link)
+        return url
+
 
     def get_readonly_fields(self, request, obj=None):
         user = request.user
