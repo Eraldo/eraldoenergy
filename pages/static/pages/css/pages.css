@@ -181,6 +181,7 @@ div.container {
   width: 60px;
   background-image: url("../images/call-btn.png");
   background-size: 60px 60px;
+  background-repeat: no-repeat;
 }
 
 #main-menu .call-btn:hover {
