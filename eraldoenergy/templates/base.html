@@ -99,7 +99,8 @@
                             <ul class="nav navbar-nav">
                                 {#                                <li class="menu-link icon-link"><a href="{% url 'contact:home' %}">home</a></li>#}
                                 <li class="menu-link"><a href="{% slugurl 'home' %}">about</a></li>
-                                <li class="menu-link dropdown">
+                                <li class="menu-link hidden-md hidden-lg"><a href="{% slugurl 'topics' %}">topics</a></li>
+                                <li class="menu-link dropdown hidden-xs hidden-sm">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">topics <b
                                             class="caret"></b></a>
                                     <ul class="dropdown-menu pull-left text-left">
