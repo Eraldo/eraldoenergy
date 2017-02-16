@@ -135,8 +135,14 @@
                            data-target=".navbar-collapse" onclick="$('.menu-btn').toggleClass('menu-btn-close');"></a>
 
                         <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav">
-                                <li class="menu-link"><a href="{% slugurl 'blog' %}">blog</a></li>
+                            <ul id="blog-container" class="nav navbar-nav">
+                                {% if user.is_authenticated %}
+                                    <li class="menu-link"><a href="{% slugurl 'blog' %}">blog</a></li>
+                                {% else %}
+                                    <li class="menu-link" data-toggle="tooltip" data-placement="bottom" title="Only for registered users.">
+                                        <a href="#blog">blog</a>
+                                    </li>
+                                {% endif %}
                                 <li class="menu-link"><a href="{% url 'contact:home' %}">contact</a></li>
                             </ul>
                         </div>
@@ -257,6 +263,11 @@
         {#   path: web/pages/something/?parameter #}
         {#   will detect "something" and add css class active to the links list element. #}
         $('#main-menu a[href*="' + location.pathname.split("/")[location.pathname.split("/").length - 2] + '"][class!="noselect"]').parent("li").addClass('active');
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
     </script>
 
     {% block extra-script %}{% endblock %}
