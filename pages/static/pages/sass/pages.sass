@@ -45,7 +45,7 @@ div.container
   img
     transition: width 1s ease
     -webkit-transition: width 1s ease, height 1s ease
-  .menu-link > a, a.menu-btn, .call-bar
+  .menu-link > a, a.menu-btn
     transition: padding 1s ease, height 1s ease
     -webkit-transition: padding 1s ease, height 1s ease
   .menu-link > a
@@ -121,8 +121,8 @@ div.container
     min-width: 100px
     &.icon-link
       /*min-width: 20px;
-  &.affix-top .call-bar
-    padding-top: 50px
+  &.affix-top .call-bar .call-btn
+    margin-top: 100px
   .call-bar > a
     margin: 40px auto
   .call-btn
@@ -132,6 +132,8 @@ div.container
     background-image: url("../images/call-btn.png")
     background-size: 60px 60px
     background-repeat: no-repeat
+    transition: margin 1s ease, height 1s ease
+    -webkit-transition: margin 1s ease, height 1s ease
     &:hover
       background-image: url("../images/call-btn-hover.png")
 

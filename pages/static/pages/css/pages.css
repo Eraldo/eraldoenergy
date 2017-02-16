@@ -40,7 +40,7 @@ div.container {
 #main-menu img {
   transition: width 1s ease;
   -webkit-transition: width 1s ease, height 1s ease; }
-#main-menu .menu-link > a, #main-menu a.menu-btn, #main-menu .call-bar {
+#main-menu .menu-link > a, #main-menu a.menu-btn {
   transition: padding 1s ease, height 1s ease;
   -webkit-transition: padding 1s ease, height 1s ease; }
 #main-menu .menu-link > a {
@@ -112,8 +112,8 @@ div.container {
   min-width: 100px; }
   #main-menu li.menu-link.icon-link {
     /*min-width: 20px; */ }
-#main-menu.affix-top .call-bar {
-  padding-top: 50px; }
+#main-menu.affix-top .call-bar .call-btn {
+  margin-top: 100px; }
 #main-menu .call-bar > a {
   margin: 40px auto; }
 #main-menu .call-btn {
@@ -122,7 +122,9 @@ div.container {
   width: 60px;
   background-image: url("../images/call-btn.png");
   background-size: 60px 60px;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  transition: margin 1s ease, height 1s ease;
+  -webkit-transition: margin 1s ease, height 1s ease; }
   #main-menu .call-btn:hover {
     background-image: url("../images/call-btn-hover.png"); }
 
