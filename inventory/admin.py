@@ -22,7 +22,7 @@ class ItemAdmin(admin.ModelAdmin):
     list_display_links = ['name']
     list_filter = ['status', 'quality', 'categories']
     list_editable = ['status', 'quality', 'price', 'price_original']
-    search_fields = ['name', 'description']
+    search_fields = ['name', 'description', 'location']
     readonly_fields = ['thumbnail', 'frontend']
     list_per_page = 40
     fields = (
