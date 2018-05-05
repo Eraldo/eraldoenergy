@@ -20,10 +20,11 @@ class PortalLinkInline(admin.TabularInline):
 class ItemAdmin(admin.ModelAdmin):
     list_display = ['thumbnail', 'name', 'status', 'quality', 'price_min', 'price', 'price_original']
     list_display_links = ['name']
-    list_filter = ['status', 'quality', 'categories']
+    list_filter = ['status', 'quality', 'categories', 'location']
     list_editable = ['status', 'quality', 'price', 'price_original']
     search_fields = ['name', 'description', 'location']
     readonly_fields = ['thumbnail', 'frontend']
+    filter_horizontal = ['categories']
     list_per_page = 40
     fields = (
         'thumbnail',
